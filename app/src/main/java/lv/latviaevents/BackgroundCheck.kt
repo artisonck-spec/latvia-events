@@ -12,7 +12,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 /**
- * Every few hours (when the phone has internet) checks GitHub for a newer app version and for new events,
+ * About every 30 minutes (when the phone has internet) checks GitHub for a newer app version and for new events,
  * and shows a notification. No boot permission: the check is set up again each time the app opens.
  */
 class BackgroundCheck : JobService() {
@@ -23,10 +23,11 @@ class BackgroundCheck : JobService() {
 
         fun schedule(ctx: Context) {
             val js = ctx.getSystemService(JobScheduler::class.java) ?: return
-            if (js.getPendingJob(JOB_ID) != null) return
+            val every = 30 * 60 * 1000L
+            if (js.getPendingJob(JOB_ID)?.intervalMillis == every) return   // already set with this interval
             val job = JobInfo.Builder(JOB_ID, ComponentName(ctx, BackgroundCheck::class.java))
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-                .setPeriodic(4 * 60 * 60 * 1000L)
+                .setPeriodic(every, 10 * 60 * 1000L)
                 .build()
             runCatching { js.schedule(job) }
         }
