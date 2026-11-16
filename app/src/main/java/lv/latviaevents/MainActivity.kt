@@ -20,6 +20,14 @@ class MainActivity : Activity() {
     private lateinit var web: WebView
     private lateinit var assets: WebViewAssetLoader
     private var pageReady = false
+    private var bottomInsetPx = 0
+
+    /** Tells the page how tall the phone's gesture bar is, so the menu can sit flush on it. */
+    private fun pushInset() {
+        if (!pageReady) return
+        val dp = bottomInsetPx / resources.displayMetrics.density
+        js("document.documentElement.style.setProperty('--safe-bot','${dp}px')")
+    }
     private var openEvent: String? = null   // event to show when the app was opened from a reminder
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -42,6 +50,7 @@ class MainActivity : Activity() {
         web.webViewClient = object : WebViewClientCompat() {
             override fun onPageFinished(view: WebView, url: String) {
                 pageReady = true
+                pushInset()
                 deliverOpenEvent()
             }
 
@@ -66,7 +75,11 @@ class MainActivity : Activity() {
         root.setOnApplyWindowInsetsListener { v, insets ->
             if (Build.VERSION.SDK_INT >= 30) {
                 val b = insets.getInsets(android.view.WindowInsets.Type.systemBars() or android.view.WindowInsets.Type.ime())
-                v.setPadding(b.left, b.top, b.right, b.bottom)
+                // top/sides: padding; bottom: the page's black menu reaches under the gesture bar itself
+                v.setPadding(b.left, b.top, b.right, 0)
+                bottomInsetPx = b.bottom
+                pushInset()
+                return@setOnApplyWindowInsetsListener android.view.WindowInsets.CONSUMED
             } else {
                 @Suppress("DEPRECATION")
                 v.setPadding(insets.systemWindowInsetLeft, insets.systemWindowInsetTop, insets.systemWindowInsetRight, insets.systemWindowInsetBottom)
@@ -76,8 +89,7 @@ class MainActivity : Activity() {
 
         setContentView(root)
         @Suppress("DEPRECATION")
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
-            (if (Build.VERSION.SDK_INT >= 26) View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR else 0)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR   // dark status icons; light gesture bar on the black menu
 
         openEvent = intent?.getStringExtra("event")
         Reminders.schedule(this)
