@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T19:10:00+02:00",
+  "updated": "2026-11-16T19:20:00+02:00",
   "center": {
     "name": "Rīga",
     "lat": 56.9496,
@@ -192,46 +192,6 @@
       "desc": "The biggest 3-day Christmas market in the Baltics: 400–500 traders from Latvia, Lithuania and Estonia under one roof, plus a Baltic food zone.",
       "verified": true,
       "image": "https://www.thewomtravel.fr/content/uploads/sites/4/2026/10/riga-1024x683.jpg",
-      "image_checked": true
-    },
-    {
-      "id": "lnmm-stardust",
-      "title": "STARDUST · Laimdota Malle",
-      "category": "exhibition",
-      "start": "2026-11-28",
-      "end": "2027-02-21",
-      "time": "Museum opening hours",
-      "place": "Latvian National Museum of Art, Cupola Hall",
-      "town": "Rīga",
-      "lat": 56.9561,
-      "lon": 24.1095,
-      "price": "Museum ticket",
-      "price_note": "See lnmm.gov.lv for current prices",
-      "url": "https://lnmm.gov.lv/en/latvian-national-museum-of-art/exhibitions/stardust-590",
-      "source": "https://lnmm.gov.lv/en/latvian-national-museum-of-art/exhibitions/stardust-590",
-      "desc": "Exhibition by artist Laimdota Malle in the Cupola Hall of the main museum building, 1 Jaņa Rozentāla Square.",
-      "verified": true,
-      "image": "https://lnmm.gov.lv/cache/images/4134270934/6a19382ee26a1_1845218601.jpg",
-      "image_checked": true
-    },
-    {
-      "id": "zuzeum-looking-away",
-      "title": "Looking away · Women artists",
-      "category": "exhibition",
-      "start": "2026-10-02",
-      "end": "2027-01-17",
-      "time": "Museum opening hours",
-      "place": "Zuzeum Art Museum, Lāčplēša iela 101",
-      "town": "Rīga",
-      "lat": 56.944,
-      "lon": 24.1405,
-      "price": "Museum ticket",
-      "price_note": "See zuzeum.com",
-      "url": "https://www.meer.com/en/112852-looking-away-women-artists-in-the-zuzans-collection-punkt-punkt-punkt",
-      "source": "https://www.meer.com/en/112852-looking-away-women-artists-in-the-zuzans-collection-punkt-punkt-punkt",
-      "desc": "Women artists in the Zuzāns Collection, 2000–2026.",
-      "verified": true,
-      "image": "https://www.meer.com/attachments/64357a1d5a090f04f935bfa7a0143adfe08e0fda/store/fill/860/645/7675668d8bf5d99a6c22d90d46402ad3d0e0adb7691259c7e0856195e4f8/Various-artists-Looking-away-Women-artists-in-the-Zuzans-Collection-2000-2026-exhibition-view.jpg",
       "image_checked": true
     },
     {

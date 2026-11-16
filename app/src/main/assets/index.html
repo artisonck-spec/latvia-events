@@ -194,6 +194,7 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
     </div>
     <h1>What's on<br>near Riga?</h1>
     <label class="search"><input id="q" type="search" placeholder="Search rally, market, enduro…" autocomplete="off"><span class="go" id="i-search"></span></label>
+    <button class="empty" id="homeBanner" style="display:none;width:100%;margin:-8px 0 22px;text-align:left"><b>Set your home</b>Distances and drive times will be counted from your address. Tap to add it in Settings.</button>
     <div class="row"><h2>Categories</h2><button class="toggle" id="radiusToggle"><span id="radiusLabel">Within 100 km</span><span class="sw on" id="radiusSw"></span></button></div>
     <div class="chips" id="chips"></div>
     <div class="row"><h2 id="upTitle">Coming up</h2><button class="link" id="seeAll">All events <span id="i-arrow-s"></span></button></div>
@@ -232,7 +233,10 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
   <section class="screen" id="s-me">
     <div class="top"><h2 style="font-size:26px">Settings</h2></div>
     <div class="panel">
-      <div class="prow"><div>Radius around Riga<small>Hide events further away</small></div><span class="pill" id="radiusPill">100 km</span></div>
+      <div class="prow" style="display:block"><div>Home<small id="homeInfo">Distances are from Riga centre</small></div>
+        <div style="display:flex;gap:8px;margin-top:10px"><input id="homeIn" placeholder="Street and town, e.g. Brīvības iela 1, Rīga" style="flex:1;min-width:0;height:42px;border-radius:12px;border:1px solid var(--line);padding:0 12px;font:inherit;font-size:14px;background:var(--bg)"><button class="pill" id="homeSave">Save</button></div>
+        <button id="homeReset" style="font-size:12px;color:var(--ink3);margin-top:8px;display:none">Use Riga centre instead</button></div>
+      <div class="prow"><div>Radius<small>Hide events further than 100 km from home</small></div><span class="pill" id="radiusPill">100 km</span></div>
       <div class="prow"><div>Show past events<small>Keep finished events in the list</small></div><button class="sw" id="pastSw" aria-label="Show past events"></button></div>
     </div>
     <div class="panel">
@@ -321,7 +325,7 @@ const CATS = {
   atv:        { name:'ATV',          color:'#6B8E23', soft:'#ECF2DC', sky:['#26351A','#9DB54B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="6" cy="16" r="3.2"/><circle cx="18" cy="16" r="3.2"/><path d="M4 12h16l-2-4h-4l-1-2h-3l1 2H6zM9.2 16h5.6"/></svg>' },
   festival:   { name:'Festivals',    color:'#7B5CD6', soft:'#EDE8FB', sky:['#1E1846','#8E6CF0'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 9 6l9 9-14 5zM13 4l1 2M18 6l-2 1M20 11h-2M15 3v1"/></svg>' },
   market:     { name:'Food markets', color:'#9C6B3F', soft:'#F3E9DF', sky:['#2E2017','#B88350'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 9 5 4h14l2 5M3 9h18M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v8h14v-8M10 20v-5h4v5"/></svg>' },
-  exhibition: { name:'Exhibitions',  color:'#2F7FB8', soft:'#E2EFF8', sky:['#132A3E','#4C9BD6'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="m3 14 5-4 4 3 3-2 6 4M8 21h8M12 17v4"/></svg>' },
+  exhibition: { name:'Expos & fairs',  color:'#2F7FB8', soft:'#E2EFF8', sky:['#132A3E','#4C9BD6'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="m3 14 5-4 4 3 3-2 6 4M8 21h8M12 17v4"/></svg>' },
   outdoor:    { name:'Outdoor',      color:'#1E8C6E', soft:'#DDF2EB', sky:['#0F2E28','#3FB592'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m2 20 7-12 4 6 2-3 7 9z"/><circle cx="17" cy="6" r="2"/></svg>' },
   orienteering:{ name:'Orienteering',color:'#D24F7A', soft:'#FBE4EC', sky:['#3A1426','#E36D97'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 21V4M5 4h14v9H5"/><path d="M5 4l14 9"/></svg>' },
   tips:       { name:'Tips & meets', color:'#4A4A55', soft:'#ECECEF', sky:['#111114','#5C5C6B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg>' }
@@ -356,6 +360,8 @@ const store = {
   set(k,v){ try{ localStorage.setItem('le.'+k, JSON.stringify(v)) }catch(_){} }
 };
 let DATA = null, EVENTS = [], cat = 'all', query = '', within = store.get('within', true), showPast = store.get('past', false);
+let home = store.get('home', null);
+const origin = () => home || RIGA;
 let saved = new Set(store.get('saved', [])), seen = new Set(store.get('seen', [])), firstRun = !store.get('seenInit', false);
 const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d };
 const pd = s => { if(!s) return null; const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d) };
@@ -380,6 +386,9 @@ function dateText(e){
   if (s.getMonth() === en.getMonth() && s.getFullYear() === en.getFullYear()) return s.getDate() + '–' + en.getDate() + ' ' + MON[s.getMonth()] + ' ' + s.getFullYear();
   return s.getDate() + ' ' + MON[s.getMonth()] + (s.getFullYear() !== en.getFullYear() ? ' ' + s.getFullYear() : '') + ' – ' + en.getDate() + ' ' + MON[en.getMonth()] + ' ' + en.getFullYear();
 }
+function drive(e){ const road = e.km * 1.3, min = Math.max(5, Math.round(road / (road < 15 ? 35 : 65) * 60 / 5) * 5);
+  return min < 60 ? '~' + min + ' min drive' : '~' + Math.floor(min / 60) + ' h ' + String(min % 60).padStart(2, '0') + ' min drive' }
+const fromWhere = () => home ? 'from home' : 'from Riga';
 function priceShort(e){ return e.price || 'Price TBA' }
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])) }
 function safeUrl(u){ return /^https?:\/\//i.test(u||'') ? u : '#' }
@@ -388,7 +397,7 @@ function safeUrl(u){ return /^https?:\/\//i.test(u||'') ? u : '#' }
 function prepare(d){
   DATA = d;
   EVENTS = (d.events || []).filter(e => e && e.id && e.title && isFinite(e.lat) && isFinite(e.lon)).map(e => {
-    e.km = Math.round(km(RIGA, e)); e.next = nextDate(e); return e;
+    e.km = Math.round(km(origin(), e)); e.next = nextDate(e); return e;
   });
   if (firstRun){ EVENTS.forEach(e => seen.add(e.id)); store.set('seen', [...seen]); store.set('seenInit', true); firstRun = false }
 }
@@ -454,6 +463,9 @@ function render(){
   const sv = EVENTS.filter(e => saved.has(e.id)).sort((a,b) => a.next - b.next);
   document.getElementById('savedList').innerHTML = sv.length ? sv.map(lrow).join('') : '<div class="empty"><b>Save events you like</b>Tap the heart on any event and it will wait for you here.</div>';
   document.getElementById('radiusLabel').textContent = within ? 'Within 100 km' : 'All of Latvia';
+  document.getElementById('homeBanner').style.display = home ? 'none' : '';
+  document.getElementById('homeInfo').textContent = home ? 'Distances from ' + home.name : 'Distances are from Riga centre';
+  document.getElementById('homeReset').style.display = home ? '' : 'none';
   document.getElementById('radiusSw').classList.toggle('on', within);
   document.getElementById('radiusPill').textContent = within ? '100 km' : 'Off';
   document.getElementById('pastSw').classList.toggle('on', showPast);
@@ -544,11 +556,11 @@ function openDetail(id){
   document.getElementById('d-side').innerHTML = '<div>'+(e.always?'∞':e.next.getDate()+'<br>'+MON[e.next.getMonth()])+'</div><div>'+e.km+'<br>km</div>';
   document.getElementById('d-fav').classList.toggle('on', saved.has(e.id));
   const fact = (icon, label, val, col) => '<div class="fact"><span class="fi" style="background:'+c.soft+';color:'+c.color+'">'+icon+'</span><div><small>'+label+'</small><b>'+esc(val)+'</b></div></div>';
-  document.getElementById('d-facts').innerHTML = fact(I.cal,'Date',dateText(e)) + fact(I.clock,'Time',e.time||'See website') + fact(I.ticket,'Ticket',pr) + fact(I.pin,'Where',e.town + ' · ' + e.km + ' km');
+  document.getElementById('d-facts').innerHTML = fact(I.cal,'Date',dateText(e)) + fact(I.clock,'Time',e.time||'See website') + fact(I.ticket,'Ticket',pr) + fact(I.pin,'Where',e.town + ' · ' + e.km + ' km ' + fromWhere()) + '<div class="fact" style="grid-column:1/-1"><span class="fi" style="background:'+c.soft+';color:'+c.color+'">'+I.nav+'</span><div><small>Getting there</small><b>'+esc(drive(e))+' '+fromWhere()+' · '+esc(e.place)+'</b></div></div>';
   const note = [e.price_note, e.verified === false ? 'This is a tip from a public forum or channel. Check it before you go.' : ''].filter(Boolean).join(' · ');
   const nEl = document.getElementById('d-note'); nEl.textContent = note; nEl.style.display = note ? '' : 'none';
   document.getElementById('d-desc').textContent = e.desc || '';
-  document.getElementById('d-nav').href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.lat + ',' + e.lon;
+  document.getElementById('d-nav').href = 'https://www.google.com/maps/dir/?api=1' + (home ? '&origin=' + home.lat + ',' + home.lon : '') + '&destination=' + e.lat + ',' + e.lon + '&travelmode=driving';
   document.getElementById('d-nav').innerHTML = I.nav + 'Navigate';
   document.getElementById('d-gmap').href = 'https://www.openstreetmap.org/?mlat=' + e.lat + '&mlon=' + e.lon + '#map=15/' + e.lat + '/' + e.lon;
   document.getElementById('d-gmap').innerHTML = I.pin + esc(e.place.split(',')[0].slice(0, 22));
@@ -684,6 +696,23 @@ document.getElementById('calNext').onclick = () => { calM = new Date(calM.getFul
 document.getElementById('calGrid').onclick = ev => { const b = ev.target.closest('[data-d]'); if (!b) return; calSel = new Date(+b.dataset.d);
   if (calSel.getMonth() !== calM.getMonth()) calM = new Date(calSel.getFullYear(), calSel.getMonth(), 1); renderCal() };
 document.getElementById('calRadius').onclick = () => { within = !within; store.set('within', within); render() };
+async function setHome(){
+  const q = document.getElementById('homeIn').value.trim(); if (!q) return toast('Type your address first');
+  const tries = [q, q.split(',').slice(-1)[0].trim(), q.replace(/^\D*?\d+\S*\s*,?\s*/, '')].filter((v, i, a) => v && a.indexOf(v) === i);
+  for (const t of tries){
+    try {
+      const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=lv&q=' + encodeURIComponent(t), { headers: { 'Accept-Language': 'lv,en' } });
+      const j = await r.json();
+      if (j && j[0]){ home = { name: q, lat: +j[0].lat, lon: +j[0].lon }; store.set('home', home); if (DATA) prepare(DATA); render();
+        document.getElementById('homeIn').value = ''; return toast(t === q ? 'Home saved' : 'Home saved (found ' + t + ')') }
+    } catch (_) { return toast('Could not look up the address – are you online?') }
+  }
+  toast('Address not found – try just the village or town');
+}
+document.getElementById('homeSave').onclick = setHome;
+document.getElementById('homeIn').addEventListener('keydown', ev => { if (ev.key === 'Enter') setHome() });
+document.getElementById('homeReset').onclick = () => { home = null; store.set('home', null); if (DATA) prepare(DATA); render(); toast('Distances from Riga centre') };
+document.getElementById('homeBanner').onclick = () => { show('me'); setTimeout(() => document.getElementById('homeIn').focus(), 200) };
 document.getElementById('reload').onclick = () => loadData(true);
 document.getElementById('checkUpd').onclick = () => checkUpdate(true);
 document.getElementById('bell').onclick = () => {

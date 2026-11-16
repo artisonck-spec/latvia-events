@@ -39,8 +39,13 @@ jobs:
         with:
           gradle-version: "8.7"
 
-      - name: Build APK
-        run: gradle assembleDebug --no-daemon --stacktrace
+      - name: Build APK (retries, as Maven Central sometimes answers "too many requests")
+        run: |
+          for i in 1 2 3; do
+            gradle assembleDebug --no-daemon --stacktrace && exit 0
+            echo "build try $i failed, waiting before the next one"; sleep $((i * 60))
+          done
+          exit 1
 
       - name: Rename APK
         run: |
