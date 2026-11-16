@@ -3,7 +3,7 @@
 The weekly self-check picks the top unchecked item that is small and safe, builds it, and ticks it off here.
 Add your own wishes anywhere in the list.
 
-- [ ] Phone notification when new events in your categories appear (background check with WorkManager, once a day)
+- [x] Phone notification when new events appear and when an app update is out (BackgroundCheck.kt, JobScheduler every 4 h)
 - [ ] "This weekend" quick filter on the home screen
 - [ ] "Free only" filter
 - [ ] Distance from your current location instead of from Riga centre (ask for location once)

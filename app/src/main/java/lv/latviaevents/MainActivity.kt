@@ -81,6 +81,8 @@ class MainActivity : Activity() {
 
         openEvent = intent?.getStringExtra("event")
         Reminders.schedule(this)
+        BackgroundCheck.schedule(this)
+        askNotify()
         if (savedInstanceState != null) web.restoreState(savedInstanceState)
         else web.loadUrl("https://appassets.androidplatform.net/assets/index.html")
     }
