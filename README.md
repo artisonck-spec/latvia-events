@@ -1,6 +1,6 @@
-# Latvia Events
+# Latvia Events (Pasākumi)
 
-A private Android app showing what's on within ~100 km of Riga: car and motorsport events, enduro and MX, ATV, festivals, exhibitions, food markets, outdoor activities and orienteering.
+A private Android app (Latvian UI) showing what's on within ~100 km of Riga: car and motorsport events, enduro and MX, ATV, festivals, exhibitions, food markets, outdoor activities and orienteering.
 
 ## Install on your phone
 
@@ -21,7 +21,11 @@ After that, the app updates itself: when a new build is out, it shows **Update a
 
 ## Event fields
 
-`id`, `title`, `category` (cars, moto, atv, festival, market, exhibition, outdoor, orienteering, tips), `start`/`end` (YYYY-MM-DD) or `always: true`, optional `dates` list, `time`, `place`, `town`, `lat`, `lon`, `price`, `price_note`, `url` (official page), `source` (where it was found), `desc`, `verified` (false for unconfirmed tips), optional `image`.
+`id`, `title`, `category` (cars, moto, atv, festival, market, exhibition, outdoor, orienteering, tips), `start`/`end` (YYYY-MM-DD) or `always: true`, optional `dates` list, `time`, `place`, `town`, `lat`, `lon`, `price`, `price_note`, `url` (official page), `source` (where it was found), `desc` (all texts in Latvian), `verified` (false for unconfirmed tips), optional `image`.
+
+## Reminders
+
+Saved (hearted) events get a phone notification the day before at 18:00 and on the day at 08:00 (`Reminders.kt`, AlarmManager; re-set after a restart).
 
 ## Suggest an event
 

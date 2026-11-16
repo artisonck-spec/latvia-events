@@ -24,6 +24,8 @@ class MainActivity : Activity() {
 
     private lateinit var web: WebView
     private lateinit var assets: WebViewAssetLoader
+    private var pageReady = false
+    private var openEvent: String? = null   // event to show when the app was opened from a reminder
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,11 @@ class MainActivity : Activity() {
         web.settings.setSupportMultipleWindows(false)
         web.addJavascriptInterface(Bridge(), "Android")
         web.webViewClient = object : WebViewClientCompat() {
+            override fun onPageFinished(view: WebView, url: String) {
+                pageReady = true
+                deliverOpenEvent()
+            }
+
             override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? =
                 assets.shouldInterceptRequest(request.url)
 
@@ -72,8 +79,29 @@ class MainActivity : Activity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
             (if (Build.VERSION.SDK_INT >= 26) View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR else 0)
 
+        openEvent = intent?.getStringExtra("event")
+        Reminders.schedule(this)
         if (savedInstanceState != null) web.restoreState(savedInstanceState)
         else web.loadUrl("https://appassets.androidplatform.net/assets/index.html")
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        intent.getStringExtra("event")?.let { openEvent = it; if (pageReady) deliverOpenEvent() }
+    }
+
+    private fun deliverOpenEvent() {
+        val id = openEvent ?: return
+        openEvent = null
+        val safe = org.json.JSONObject.quote(id)
+        js("window.openFromNotice && window.openFromNotice($safe)")
+    }
+
+    fun askNotify() = runOnUiThread {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED)
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 41)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -107,6 +135,12 @@ class MainActivity : Activity() {
         @JavascriptInterface fun build(): Long = buildNumber()
         @JavascriptInterface fun downloadUpdate(url: String) = this@MainActivity.downloadUpdate(url)
         @JavascriptInterface fun open(url: String) = openOutside(Uri.parse(url))
+        @JavascriptInterface fun setReminders(json: String) = Reminders.save(this@MainActivity, json)
+        @JavascriptInterface fun askNotify() = this@MainActivity.askNotify()
+        @JavascriptInterface fun testReminder() {
+            askNotify()
+            Reminders.notify(this@MainActivity, "", "Atgādinājumi strādā", "Par saglabātajiem pasākumiem: dienu iepriekš 18:00 un pasākuma dienā 8:00.", 7)
+        }
     }
 
     // ---- Updating the app: download the new APK (progress to the page), then hand it to Android's installer ----

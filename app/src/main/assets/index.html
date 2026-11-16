@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lv">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Latvia Events</title>
+<title>Pasākumi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -193,70 +193,71 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
   <section class="screen on" id="s-home">
     <div class="top">
       <div class="hello"><div class="avatar" id="avatar"></div><span id="greet">Labdien!</span></div>
-      <button class="iconbtn" id="bell" aria-label="Updates"><span id="i-bell"></span><span class="dot" id="belldot"></span></button>
+      <button class="iconbtn" id="bell" aria-label="Jaunumi"><span id="i-bell"></span><span class="dot" id="belldot"></span></button>
     </div>
-    <h1>What's on<br>near Riga?</h1>
-    <label class="search"><input id="q" type="search" placeholder="Search rally, market, enduro…" autocomplete="off"><span class="go" id="i-search"></span></label>
-    <button class="empty" id="homeBanner" style="display:none;width:100%;margin:-8px 0 22px;text-align:left"><b>Set your home</b>Distances and drive times will be counted from your address. Tap to add it in Settings.</button>
-    <div class="row"><h2>Categories</h2><button class="toggle" id="radiusToggle"><span id="radiusLabel">Within 100 km</span><span class="sw on" id="radiusSw"></span></button></div>
+    <h1>Kas notiek<br>pie Rīgas?</h1>
+    <label class="search"><input id="q" type="search" placeholder="Meklē rallijus, tirdziņus, enduro…" autocomplete="off"><span class="go" id="i-search"></span></label>
+    <button class="empty" id="homeBanner" style="display:none;width:100%;margin:-8px 0 22px;text-align:left"><b>Norādi savas mājas</b>Attālumi un brauciena laiks tiks rēķināti no tavas adreses. Pieskaries, lai to pievienotu iestatījumos.</button>
+    <div class="row"><h2>Kategorijas</h2><button class="toggle" id="radiusToggle"><span id="radiusLabel">Līdz 100 km</span><span class="sw on" id="radiusSw"></span></button></div>
     <div class="chips" id="chips"></div>
-    <div class="row"><h2 id="upTitle">Coming up</h2><button class="link" id="seeAll">All events <span id="i-arrow-s"></span></button></div>
+    <div class="row"><h2 id="upTitle">Drīzumā</h2><button class="link" id="seeAll">Visi pasākumi <span id="i-arrow-s"></span></button></div>
     <div class="cards" id="cards"></div>
-    <div class="row"><h2>Calendar</h2><span class="link" id="countLabel"></span></div>
+    <div class="row"><h2>Visi pasākumi</h2><span class="link" id="countLabel"></span></div>
     <div class="list" id="list"></div>
-    <a class="btn2" style="margin-bottom:24px" href="https://github.com/artisonck-spec/latvia-events/issues/new?labels=tip&title=Event%20tip%3A%20&body=What%3A%0AWhen%3A%0AWhere%3A%0ALink%20(if%20any)%3A%0A" target="_blank" rel="noopener" id="tipBtn"></a>
+    <a class="btn2" style="margin-bottom:24px" href="https://github.com/artisonck-spec/latvia-events/issues/new?labels=tip&title=Pas%C4%81kums%3A%20&body=Kas%3A%0AKad%3A%0AKur%3A%0ASaite%3A%0A" target="_blank" rel="noopener" id="tipBtn"></a>
   </section>
 
   <!-- CALENDAR -->
   <section class="screen" id="s-cal">
-    <div class="top"><h2 style="font-size:26px">Calendar</h2><button class="pill" id="calSaved" style="display:flex;align-items:center;gap:6px"></button></div>
+    <div class="top"><h2 style="font-size:26px">Kalendārs</h2><div style="display:flex;gap:8px"><button class="pill" id="calToday" style="background:var(--dark);color:#fff">Šodien</button><button class="pill" id="calSaved" style="display:flex;align-items:center;gap:6px"></button></div></div>
     <div class="cal">
-      <div class="calhead"><button id="calPrev" aria-label="Previous month"></button><b id="calTitle"></b><button id="calNext" aria-label="Next month"></button></div>
-      <div class="wk"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+      <div class="calhead"><button id="calPrev" aria-label="Iepriekšējais mēnesis"></button><b id="calTitle"></b><button id="calNext" aria-label="Nākamais mēnesis"></button></div>
+      <div class="wk"><span>P</span><span>O</span><span>T</span><span>C</span><span>Pk</span><span>S</span><span>Sv</span></div>
       <div class="grid" id="calGrid"></div>
       <div class="legend" id="calLegend"></div>
     </div>
-    <div class="row"><h2 id="calDayTitle">Today</h2><span class="link" id="calDayCount"></span></div>
+    <div class="row"><h2 id="calDayTitle">Šodien</h2><span class="link" id="calDayCount"></span></div>
     <div class="list" id="calList"></div>
   </section>
 
   <!-- MAP -->
   <section class="screen" id="s-map">
-    <div class="top"><h2 style="font-size:26px">Map</h2><span class="link" id="mapCount"></span></div>
+    <div class="top"><h2 style="font-size:26px">Karte</h2><span class="link" id="mapCount"></span></div>
     <div class="mapbox big" id="bigmap"></div>
   </section>
 
   <!-- SAVED -->
   <section class="screen" id="s-saved">
-    <div class="top"><h2 style="font-size:26px">Saved</h2></div>
+    <div class="top"><h2 style="font-size:26px">Saglabātie</h2></div>
     <div class="list" id="savedList"></div>
   </section>
 
   <!-- SETTINGS -->
   <section class="screen" id="s-me">
-    <div class="top"><h2 style="font-size:26px">Settings</h2></div>
+    <div class="top"><h2 style="font-size:26px">Iestatījumi</h2></div>
     <div class="panel">
-      <div class="prow" style="display:block"><div>Home<small id="homeInfo">Distances are from Riga centre</small></div>
-        <div style="display:flex;gap:8px;margin-top:10px"><input id="homeIn" placeholder="Street and town, e.g. Brīvības iela 1, Rīga" style="flex:1;min-width:0;height:42px;border-radius:12px;border:1px solid var(--line);padding:0 12px;font:inherit;font-size:14px;background:var(--bg)"><button class="pill" id="homeSave">Save</button></div>
-        <button id="homeReset" style="font-size:12px;color:var(--ink3);margin-top:8px;display:none">Use Riga centre instead</button></div>
-      <div class="prow"><div>Radius<small>Hide events further than 100 km from home</small></div><span class="pill" id="radiusPill">100 km</span></div>
-      <div class="prow"><div>Show past events<small>Keep finished events in the list</small></div><button class="sw" id="pastSw" aria-label="Show past events"></button></div>
+      <div class="prow" style="display:block"><div>Mājas<small id="homeInfo">Attālumi no Rīgas centra</small></div>
+        <div style="display:flex;gap:8px;margin-top:10px"><input id="homeIn" placeholder="Iela un pilsēta, piem. Brīvības iela 1, Rīga" style="flex:1;min-width:0;height:42px;border-radius:12px;border:1px solid var(--line);padding:0 12px;font:inherit;font-size:14px;background:var(--bg)"><button class="pill" id="homeSave">Saglabāt</button></div>
+        <button id="homeReset" style="font-size:12px;color:var(--ink3);margin-top:8px;display:none">Rēķināt no Rīgas centra</button></div>
+      <div class="prow"><div>Rādiuss<small>Slēpt pasākumus tālāk par 100 km no mājām</small></div><span class="pill" id="radiusPill">100 km</span></div>
+      <div class="prow"><div>Rādīt pagājušos<small>Atstāt sarakstā beigušos pasākumus</small></div><button class="sw" id="pastSw" aria-label="Rādīt pagājušos"></button></div>
     </div>
     <div class="panel">
-      <div class="prow"><div>Event list<small id="dataInfo">–</small></div><button class="pill" id="reload">Refresh</button></div>
-      <div class="prow"><div>App version<small id="verInfo">–</small></div><button class="pill" id="checkUpd">Check</button></div>
-      <div class="prow"><div>Suggest an event<small>Heard about a meet or ride? The next scan checks it.</small></div><a class="pill" href="https://github.com/artisonck-spec/latvia-events/issues/new?labels=tip&title=Event%20tip%3A%20&body=What%3A%0AWhen%3A%0AWhere%3A%0ALink%20(if%20any)%3A%0A" target="_blank" rel="noopener">Suggest</a></div>
+      <div class="prow"><div>Pasākumu saraksts<small id="dataInfo">–</small></div><button class="pill" id="reload">Atjaunot</button></div>
+      <div class="prow"><div>Lietotnes versija<small id="verInfo">–</small></div><button class="pill" id="checkUpd">Pārbaudīt</button></div>
+      <div class="prow"><div>Atgādinājumi<small>Par saglabātajiem: dienu iepriekš 18:00 un pasākuma dienā 8:00</small></div><button class="pill" id="testNotify">Pārbaudīt</button></div>
+      <div class="prow"><div>Ieteikt pasākumu<small>Dzirdēji par salidojumu vai braucienu? Nākamā meklēšana to pārbaudīs.</small></div><a class="pill" href="https://github.com/artisonck-spec/latvia-events/issues/new?labels=tip&title=Pas%C4%81kums%3A%20&body=Kas%3A%0AKad%3A%0AKur%3A%0ASaite%3A%0A" target="_blank" rel="noopener">Ieteikt</a></div>
     </div>
     <div class="panel">
-      <div class="prow" style="display:block;font-size:13px;color:var(--ink2);line-height:1.6">A scheduled search looks for new events near Riga twice a week: motorsport, enduro, ATV, festivals, exhibitions, food markets, outdoor and orienteering. Each event links to the page it came from. Tips from forums and channels are marked as unconfirmed.</div>
+      <div class="prow" style="display:block;font-size:13px;color:var(--ink2);line-height:1.6">Divas reizes nedēļā automātiska meklēšana atrod jaunus pasākumus ap Rīgu: autosports, enduro, kvadracikli, festivāli, izstādes, tirdziņi, āra aktivitātes un orientēšanās. Katram pasākumam ir saite uz avotu. Padomi no forumiem un kanāliem ir atzīmēti kā nepārbaudīti.</div>
     </div>
   </section>
 
   <nav class="nav" id="nav">
-    <button class="on" data-s="home" aria-label="Home"></button>
-    <button data-s="cal" aria-label="Calendar"></button>
-    <button data-s="map" aria-label="Map"></button>
-    <button data-s="me" aria-label="Settings"></button>
+    <button class="on" data-s="home" aria-label="Sākums"></button>
+    <button data-s="cal" aria-label="Kalendārs"></button>
+    <button data-s="map" aria-label="Karte"></button>
+    <button data-s="me" aria-label="Iestatījumi"></button>
   </nav>
 </div>
 
@@ -265,12 +266,12 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
   <div class="dwrap">
     <div class="hero">
       <div class="bgart" id="d-art"></div>
-      <button class="hb back" id="d-back" aria-label="Back"></button>
-      <button class="hb fav" id="d-fav" aria-label="Save"></button>
+      <button class="hb back" id="d-back" aria-label="Atpakaļ"></button>
+      <button class="hb fav" id="d-fav" aria-label="Saglabāt"></button>
       <div class="cap"><div class="cat" id="d-cat"></div><h3 id="d-title"></h3><div class="pr" id="d-price"></div></div>
       <div class="side" id="d-side"></div>
     </div>
-    <div class="tabs"><button class="on" data-t="ov">Overview</button><button data-t="map">Map</button><button data-t="src">Source</button></div>
+    <div class="tabs"><button class="on" data-t="ov">Apraksts</button><button data-t="map">Karte</button><button data-t="src">Avots</button></div>
     <div id="t-ov">
       <div class="facts" id="d-facts"></div>
       <div class="note" id="d-note" style="display:none"></div>
@@ -286,11 +287,11 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
 
 <!-- UPDATE SHEET -->
 <div class="sheet" id="sheet"><div class="in">
-  <h4 id="u-title">Update available</h4>
+  <h4 id="u-title">Pieejams atjauninājums</h4>
   <p id="u-notes"></p>
   <div class="bar" id="u-bar" style="display:none"><i id="u-prog"></i></div>
   <button class="cta" id="u-go"></button>
-  <button class="later" id="u-later">Later</button>
+  <button class="later" id="u-later">Vēlāk</button>
 </div></div>
 <div class="toast" id="toast"></div>
 
@@ -321,18 +322,18 @@ const I = {
   ext:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>'
 };
 const CATS = {
-  all:        { name:'All',          color:'#141416', soft:'#EDEDF0', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>' },
-  cars:       { name:'Cars',         color:'#E2552B', soft:'#FDE8DF', sky:['#2B2D42','#EF8354'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 15v-3l2-4.5A2 2 0 0 1 6.8 6h10.4a2 2 0 0 1 1.8 1.5L21 12v3a1 1 0 0 1-1 1h-1M5 16H4a1 1 0 0 1-1-1M3 12h18"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/><path d="M9 16.5h6"/></svg>' },
-  moto:       { name:'Enduro & MX',  color:'#D9822B', soft:'#FCEFD9', sky:['#3D2C1E','#E9A23B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="16" r="3"/><circle cx="19" cy="16" r="3"/><path d="M7.5 14 11 9h4l4 7M11 9l-1-3h-2M15 9l1-3h2"/></svg>' },
-  atv:        { name:'ATV',          color:'#6B8E23', soft:'#ECF2DC', sky:['#26351A','#9DB54B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="6" cy="16" r="3.2"/><circle cx="18" cy="16" r="3.2"/><path d="M4 12h16l-2-4h-4l-1-2h-3l1 2H6zM9.2 16h5.6"/></svg>' },
-  festival:   { name:'Festivals',    color:'#7B5CD6', soft:'#EDE8FB', sky:['#1E1846','#8E6CF0'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 9 6l9 9-14 5zM13 4l1 2M18 6l-2 1M20 11h-2M15 3v1"/></svg>' },
-  market:     { name:'Food markets', color:'#9C6B3F', soft:'#F3E9DF', sky:['#2E2017','#B88350'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 9 5 4h14l2 5M3 9h18M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v8h14v-8M10 20v-5h4v5"/></svg>' },
-  exhibition: { name:'Expos & fairs',  color:'#2F7FB8', soft:'#E2EFF8', sky:['#132A3E','#4C9BD6'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="m3 14 5-4 4 3 3-2 6 4M8 21h8M12 17v4"/></svg>' },
-  outdoor:    { name:'Outdoor',      color:'#1E8C6E', soft:'#DDF2EB', sky:['#0F2E28','#3FB592'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m2 20 7-12 4 6 2-3 7 9z"/><circle cx="17" cy="6" r="2"/></svg>' },
-  orienteering:{ name:'Orienteering',color:'#D24F7A', soft:'#FBE4EC', sky:['#3A1426','#E36D97'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 21V4M5 4h14v9H5"/><path d="M5 4l14 9"/></svg>' },
-  tips:       { name:'Tips & meets', color:'#4A4A55', soft:'#ECECEF', sky:['#111114','#5C5C6B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg>' }
+  all:        { name:'Visi',          color:'#141416', soft:'#EDEDF0', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>' },
+  cars:       { name:'Auto',         color:'#E2552B', soft:'#FDE8DF', sky:['#2B2D42','#EF8354'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 15v-3l2-4.5A2 2 0 0 1 6.8 6h10.4a2 2 0 0 1 1.8 1.5L21 12v3a1 1 0 0 1-1 1h-1M5 16H4a1 1 0 0 1-1-1M3 12h18"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/><path d="M9 16.5h6"/></svg>' },
+  moto:       { name:'Enduro un MX',  color:'#D9822B', soft:'#FCEFD9', sky:['#3D2C1E','#E9A23B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="16" r="3"/><circle cx="19" cy="16" r="3"/><path d="M7.5 14 11 9h4l4 7M11 9l-1-3h-2M15 9l1-3h2"/></svg>' },
+  atv:        { name:'Kvadracikli',          color:'#6B8E23', soft:'#ECF2DC', sky:['#26351A','#9DB54B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="6" cy="16" r="3.2"/><circle cx="18" cy="16" r="3.2"/><path d="M4 12h16l-2-4h-4l-1-2h-3l1 2H6zM9.2 16h5.6"/></svg>' },
+  festival:   { name:'Festivāli',    color:'#7B5CD6', soft:'#EDE8FB', sky:['#1E1846','#8E6CF0'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 9 6l9 9-14 5zM13 4l1 2M18 6l-2 1M20 11h-2M15 3v1"/></svg>' },
+  market:     { name:'Tirdziņi', color:'#9C6B3F', soft:'#F3E9DF', sky:['#2E2017','#B88350'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 9 5 4h14l2 5M3 9h18M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v8h14v-8M10 20v-5h4v5"/></svg>' },
+  exhibition: { name:'Izstādes',  color:'#2F7FB8', soft:'#E2EFF8', sky:['#132A3E','#4C9BD6'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="m3 14 5-4 4 3 3-2 6 4M8 21h8M12 17v4"/></svg>' },
+  outdoor:    { name:'Āra aktivitātes',      color:'#1E8C6E', soft:'#DDF2EB', sky:['#0F2E28','#3FB592'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m2 20 7-12 4 6 2-3 7 9z"/><circle cx="17" cy="6" r="2"/></svg>' },
+  orienteering:{ name:'Orientēšanās',color:'#D24F7A', soft:'#FBE4EC', sky:['#3A1426','#E36D97'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 21V4M5 4h14v9H5"/><path d="M5 4l14 9"/></svg>' },
+  tips:       { name:'Salidojumi', color:'#4A4A55', soft:'#ECECEF', sky:['#111114','#5C5C6B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg>' }
 };
-const SHORT = { all:'All', cars:'Cars', moto:'Enduro', atv:'ATV', festival:'Festivals', market:'Markets', exhibition:'Expos', outdoor:'Outdoor', orienteering:'Orient.', tips:'Meets' };
+const SHORT = { all:'Visi', cars:'Auto', moto:'Enduro', atv:'Kvadri', festival:'Festivāli', market:'Tirdziņi', exhibition:'Izstādes', outdoor:'Daba', orienteering:'Orient.', tips:'Salidoj.' };
 const catOf = e => CATS[e.category] ? e.category : 'tips';
 
 /* ---------- generated artwork (no photos needed) ---------- */
@@ -368,9 +369,9 @@ const origin = () => home || RIGA;
 let saved = new Set(store.get('saved', [])), seen = new Set(store.get('seen', [])), firstRun = !store.get('seenInit', false);
 const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d };
 const pd = s => { if(!s) return null; const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d) };
-const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const MONL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MON = ['janv.','febr.','marts','apr.','maijs','jūn.','jūl.','aug.','sept.','okt.','nov.','dec.'];
+const MONL = ['janvāris','februāris','marts','aprīlis','maijs','jūnijs','jūlijs','augusts','septembris','oktobris','novembris','decembris'];
+const DOW = ['Sv','P','O','T','C','Pk','S'];
 function km(a,b){ const R=6371, t=x=>x*Math.PI/180, dLa=t(b.lat-a.lat), dLo=t(b.lon-a.lon);
   const x=Math.sin(dLa/2)**2+Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(dLo/2)**2; return 2*R*Math.asin(Math.sqrt(x)) }
 function nextDate(e){ // the next day this event happens (or its start if ongoing)
@@ -382,17 +383,17 @@ function nextDate(e){ // the next day this event happens (or its start if ongoin
 function isPast(e){ if (e.always) return false; const en = pd(e.end) || pd(e.start); return en && en < today() }
 function isOn(e){ if (e.always) return true; const s = pd(e.start), en = pd(e.end)||s, t = today(); return s <= t && en >= t }
 function dateText(e){
-  if (e.always) return 'Year-round';
+  if (e.always) return 'Visu gadu';
   const s = pd(e.start), en = pd(e.end) || s;
-  if (e.dates && e.dates.length > 1) return e.dates.map(pd).map(d => d.getDate()).join(', ') + ' ' + MON[s.getMonth()] + (pd(e.dates[e.dates.length-1]).getMonth() !== s.getMonth() ? '–' + MON[en.getMonth()] : '');
-  if (+s === +en) return DOW[s.getDay()] + ', ' + s.getDate() + ' ' + MON[s.getMonth()] + ' ' + s.getFullYear();
-  if (s.getMonth() === en.getMonth() && s.getFullYear() === en.getFullYear()) return s.getDate() + '–' + en.getDate() + ' ' + MON[s.getMonth()] + ' ' + s.getFullYear();
-  return s.getDate() + ' ' + MON[s.getMonth()] + (s.getFullYear() !== en.getFullYear() ? ' ' + s.getFullYear() : '') + ' – ' + en.getDate() + ' ' + MON[en.getMonth()] + ' ' + en.getFullYear();
+  if (e.dates && e.dates.length > 1) return e.dates.map(pd).map(d => d.getDate() + '.').join(', ') + ' ' + MON[s.getMonth()] + (pd(e.dates[e.dates.length-1]).getMonth() !== s.getMonth() ? '–' + MON[en.getMonth()] : '');
+  if (+s === +en) return DOW[s.getDay()] + ', ' + s.getDate() + '. ' + MON[s.getMonth()] + ' ' + s.getFullYear();
+  if (s.getMonth() === en.getMonth() && s.getFullYear() === en.getFullYear()) return s.getDate() + '.–' + en.getDate() + '. ' + MON[s.getMonth()] + ' ' + s.getFullYear();
+  return s.getDate() + '. ' + MON[s.getMonth()] + (s.getFullYear() !== en.getFullYear() ? ' ' + s.getFullYear() : '') + ' – ' + en.getDate() + '. ' + MON[en.getMonth()] + ' ' + en.getFullYear();
 }
 function drive(e){ const road = e.km * 1.3, min = Math.max(5, Math.round(road / (road < 15 ? 35 : 65) * 60 / 5) * 5);
-  return min < 60 ? '~' + min + ' min drive' : '~' + Math.floor(min / 60) + ' h ' + String(min % 60).padStart(2, '0') + ' min drive' }
-const fromWhere = () => home ? 'from home' : 'from Riga';
-function priceShort(e){ return e.price || 'Price TBA' }
+  return min < 60 ? '~' + min + ' min ar auto' : '~' + Math.floor(min / 60) + ' h ' + String(min % 60).padStart(2, '0') + ' min ar auto' }
+const fromWhere = () => home ? 'no mājām' : 'no Rīgas';
+function priceShort(e){ return e.price || 'Cena vēl nav zināma' }
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])) }
 function safeUrl(u){ return /^https?:\/\//i.test(u||'') ? u : '#' }
 
@@ -412,8 +413,9 @@ async function loadData(force){
     const r = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) throw 0;
     const d = await r.json();
-    if (d && Array.isArray(d.events)) { store.set('data', d); prepare(d); render(); if (force) toast('Event list updated') }
-  } catch (_) { if (force) toast('Offline – showing the saved list') }
+    if (d && Array.isArray(d.events)) { store.set('data', d); prepare(d); render(); syncReminders();
+      if (pendingOpen) { const id = pendingOpen; pendingOpen = null; openDetail(id) } if (force) toast('Saraksts atjaunots') }
+  } catch (_) { if (force) toast('Nav interneta – rāda saglabāto sarakstu') }
 }
 
 /* ---------- rendering ---------- */
@@ -434,12 +436,12 @@ function chips(){
 function heartBtn(e){ return '<span class="heart'+(saved.has(e.id)?' on':'')+'" data-h="'+esc(e.id)+'">'+I.heart+'</span>' }
 function tcard(e){
   return '<button class="tcard" data-e="'+esc(e.id)+'"><div class="art">'+media(e)+
-    (!seen.has(e.id)?'<span class="new-tag">NEW</span>':'')+'<span class="price-tag">'+esc(priceShort(e))+'</span></div>'+
-    '<div class="meta"><div><div class="t">'+esc(e.title)+'</div><div class="s">'+esc(isOn(e)&&!e.always?'On now':dateText(e))+' · '+esc(e.town)+'</div></div>'+heartBtn(e)+'</div></button>';
+    (!seen.has(e.id)?'<span class="new-tag">JAUNS</span>':'')+'<span class="price-tag">'+esc(priceShort(e))+'</span></div>'+
+    '<div class="meta"><div><div class="t">'+esc(e.title)+'</div><div class="s">'+esc(isOn(e)&&!e.always?'Notiek tagad':dateText(e))+' · '+esc(e.town)+'</div></div>'+heartBtn(e)+'</div></button>';
 }
 function lrow(e){
   const d = e.next;
-  const when = e.always ? '<b style="font-size:13px">∞</b><span>always</span>' : isOn(e) ? '<b style="font-size:13px;color:var(--accent)">NOW</b><span>on</span>' : '<b>'+d.getDate()+'</b><span>'+MON[d.getMonth()]+'</span>';
+  const when = e.always ? '<b style="font-size:13px">∞</b><span>vienmēr</span>' : isOn(e) ? '<b style="font-size:13px;color:var(--accent)">TAGAD</b><span>notiek</span>' : '<b>'+d.getDate()+'</b><span>'+MON[d.getMonth()]+'</span>';
   return '<button class="lrow" data-e="'+esc(e.id)+'"><div class="art">'+media(e)+'</div><div class="body"><div class="t">'+(!seen.has(e.id)?'<span style="color:var(--accent)">● </span>':'')+esc(e.title)+'</div>'+
     '<div class="s">'+esc(e.town)+' · '+e.km+' km · '+esc(dateText(e))+'</div><div class="p">'+esc(priceShort(e))+'</div></div><div class="when">'+when+'</div></button>';
 }
@@ -447,34 +449,34 @@ function render(){
   chips();
   const list = filtered();
   const upcoming = list.filter(e => !e.always).slice(0, 8);
-  document.getElementById('upTitle').textContent = cat === 'all' ? 'Coming up' : CATS[cat].name;
+  document.getElementById('upTitle').textContent = cat === 'all' ? 'Drīzumā' : CATS[cat].name;
   document.getElementById('cards').innerHTML = upcoming.length ? upcoming.map(tcard).join('') : '';
   document.getElementById('cards').style.display = upcoming.length ? '' : 'none';
-  document.getElementById('countLabel').textContent = list.length + (list.length === 1 ? ' event' : ' events');
+  document.getElementById('countLabel').textContent = nEv(list.length);
   let html = '', lastM = '';
   list.forEach(e => {
-    const m = e.always ? 'Any time' : MONL[e.next.getMonth()] + ' ' + e.next.getFullYear();
+    const m = e.always ? 'Jebkurā laikā' : MONL[e.next.getMonth()] + ' ' + e.next.getFullYear();
     if (m !== lastM){ html += '<div class="monthhead">'+m+'</div>'; lastM = m }
     html += lrow(e);
   });
   if (!list.length){
     html = cat === 'tips'
-      ? '<div class="empty"><b>No tips yet</b>Car meets and rides shared in public channels and forums will show up here, marked as unconfirmed.</div>'
-      : '<div class="empty"><b>Nothing found</b>Try another category'+(within?', or turn off "Within 100 km"':'')+'.</div>';
+      ? '<div class="empty"><b>Pagaidām nav</b>Šeit parādīsies auto salidojumi un braucieni no publiskiem kanāliem un forumiem, atzīmēti kā nepārbaudīti.</div>'
+      : '<div class="empty"><b>Nekas nav atrasts</b>Izvēlies citu kategoriju'+(within?' vai izslēdz "Līdz 100 km"':'')+'.</div>';
   }
   document.getElementById('list').innerHTML = html;
   const sv = EVENTS.filter(e => saved.has(e.id)).sort((a,b) => a.next - b.next);
-  document.getElementById('savedList').innerHTML = sv.length ? sv.map(lrow).join('') : '<div class="empty"><b>Save events you like</b>Tap the heart on any event and it will wait for you here.</div>';
-  document.getElementById('radiusLabel').textContent = within ? 'Within 100 km' : 'All of Latvia';
+  document.getElementById('savedList').innerHTML = sv.length ? sv.map(lrow).join('') : '<div class="empty"><b>Saglabā pasākumus</b>Pieskaries sirsniņai, un pasākums gaidīs tevi šeit.</div>';
+  document.getElementById('radiusLabel').textContent = within ? 'Līdz 100 km' : 'Visa Latvija';
   document.getElementById('homeBanner').style.display = home ? 'none' : '';
-  document.getElementById('homeInfo').textContent = home ? 'Distances from ' + home.name : 'Distances are from Riga centre';
+  document.getElementById('homeInfo').textContent = home ? 'Attālumi no: ' + home.name : 'Attālumi no Rīgas centra';
   document.getElementById('homeReset').style.display = home ? '' : 'none';
   document.getElementById('radiusSw').classList.toggle('on', within);
-  document.getElementById('radiusPill').textContent = within ? '100 km' : 'Off';
+  document.getElementById('radiusPill').textContent = within ? '100 km' : 'Izslēgts';
   document.getElementById('pastSw').classList.toggle('on', showPast);
   const nNew = EVENTS.filter(e => !seen.has(e.id) && !isPast(e)).length;
   document.getElementById('belldot').classList.toggle('on', nNew > 0 || !!pendingUpdate);
-  if (DATA && DATA.updated){ const u = new Date(DATA.updated); document.getElementById('dataInfo').textContent = EVENTS.length + ' events · updated ' + u.getDate() + ' ' + MON[u.getMonth()] + ' ' + String(u.getHours()).padStart(2,'0') + ':' + String(u.getMinutes()).padStart(2,'0') }
+  if (DATA && DATA.updated){ const u = new Date(DATA.updated); document.getElementById('dataInfo').textContent = nEv(EVENTS.length) + ' · atjaunots ' + u.getDate() + '. ' + MON[u.getMonth()] + ' ' + String(u.getHours()).padStart(2,'0') + ':' + String(u.getMinutes()).padStart(2,'0') }
   if (curScreen === 'map') bigMap.setEvents(filtered());
   if (curScreen === 'cal') renderCal();
 }
@@ -484,7 +486,7 @@ class TileMap {
   constructor(el, opts = {}){
     this.el = el; this.z = opts.zoom || 12; this.c = { lat: opts.lat || RIGA.lat, lon: opts.lon || RIGA.lon };
     this.events = []; this.sel = null; this.onPick = opts.onPick;
-    el.innerHTML = '<div class="mapfallback"></div><div class="tiles"></div><div class="zoom"><button aria-label="Zoom in">+</button><button aria-label="Zoom out">−</button></div><div class="attrib">© OpenStreetMap</div><div class="maphint">Map tiles load in the app</div><div class="mapinfo"></div>';
+    el.innerHTML = '<div class="mapfallback"></div><div class="tiles"></div><div class="zoom"><button aria-label="Tuvināt">+</button><button aria-label="Tālināt">−</button></div><div class="attrib">© OpenStreetMap</div><div class="maphint">Karte ielādējas lietotnē</div><div class="mapinfo"></div>';
     this.tiles = el.querySelector('.tiles'); this.info = el.querySelector('.mapinfo'); this.hint = el.querySelector('.maphint');
     if (TileMap._f) this.hint.style.display = 'block';
     const [zi, zo] = el.querySelectorAll('.zoom button');
@@ -528,7 +530,7 @@ class TileMap {
     Object.values(groups).forEach(g => {
       const e = g[0], p = this.px(e), x = p.x - ox, y = p.y - oy; if (x < -100 || y < -60 || x > W + 100 || y > H + 60) return;
       const isSel = this.sel && g.some(v => v.id === this.sel);
-      const label = g.length > 1 ? g.length + ' events · ' + e.place.split(',')[0] : e.title;
+      const label = g.length > 1 ? nEv(g.length) + ' · ' + e.place.split(',')[0] : e.title;
       html += '<div class="pin'+(small && !isSel ? ' small' : '')+(isSel ? ' sel' : '')+'" data-k="'+esc(e.id)+'" style="left:'+x+'px;top:'+y+'px"><div class="pb"><i style="background:'+CATS[catOf(e)].color+'"></i>'+(small && !isSel ? '' : esc(label))+'</div><div class="pt"></div></div>';
     });
     this.tiles.innerHTML = html;
@@ -552,32 +554,32 @@ function openDetail(id){
   if (!seen.has(e.id)){ seen.add(e.id); store.set('seen', [...seen]) }
   const c = CATS[catOf(e)];
   document.getElementById('d-art').innerHTML = media(e);
-  document.getElementById('d-cat').textContent = c.name + (e.verified === false ? ' · unconfirmed tip' : '');
+  document.getElementById('d-cat').textContent = c.name + (e.verified === false ? ' · nepārbaudīts' : '');
   document.getElementById('d-title').textContent = e.title;
   const pr = priceShort(e), isNum = /\d/.test(pr) && /€|eur/i.test(pr);
-  document.getElementById('d-price').innerHTML = esc(pr) + (isNum ? '<small>/person</small>' : '');
+  document.getElementById('d-price').innerHTML = esc(pr) + (isNum ? '<small>/pers.</small>' : '');
   document.getElementById('d-side').innerHTML = '<div>'+(e.always?'∞':e.next.getDate()+'<br>'+MON[e.next.getMonth()])+'</div><div>'+e.km+'<br>km</div>';
   document.getElementById('d-fav').classList.toggle('on', saved.has(e.id));
   const fact = (icon, label, val, col) => '<div class="fact"><span class="fi" style="background:'+c.soft+';color:'+c.color+'">'+icon+'</span><div><small>'+label+'</small><b>'+esc(val)+'</b></div></div>';
-  document.getElementById('d-facts').innerHTML = fact(I.cal,'Date',dateText(e)) + fact(I.clock,'Time',e.time||'See website') + fact(I.ticket,'Ticket',pr) + fact(I.pin,'Where',e.town + ' · ' + e.km + ' km ' + fromWhere()) + '<div class="fact" style="grid-column:1/-1"><span class="fi" style="background:'+c.soft+';color:'+c.color+'">'+I.nav+'</span><div><small>Getting there</small><b>'+esc(drive(e))+' '+fromWhere()+' · '+esc(e.place)+'</b></div></div>';
-  const note = [e.price_note, e.verified === false ? 'This is a tip from a public forum or channel. Check it before you go.' : ''].filter(Boolean).join(' · ');
+  document.getElementById('d-facts').innerHTML = fact(I.cal,'Datums',dateText(e)) + fact(I.clock,'Laiks',e.time||'Skaties mājaslapā') + fact(I.ticket,'Biļete',pr) + fact(I.pin,'Kur',e.town + ' · ' + e.km + ' km ' + fromWhere()) + '<div class="fact" style="grid-column:1/-1"><span class="fi" style="background:'+c.soft+';color:'+c.color+'">'+I.nav+'</span><div><small>Kā nokļūt</small><b>'+esc(drive(e))+' '+fromWhere()+' · '+esc(e.place)+'</b></div></div>';
+  const note = [e.price_note, e.verified === false ? 'Šis ir nepārbaudīts padoms. Pirms brauc, pārliecinies, ka tas notiks.' : ''].filter(Boolean).join(' · ');
   const nEl = document.getElementById('d-note'); nEl.textContent = note; nEl.style.display = note ? '' : 'none';
   document.getElementById('d-desc').textContent = e.desc || '';
   document.getElementById('d-nav').href = 'https://www.google.com/maps/dir/?api=1' + (home ? '&origin=' + home.lat + ',' + home.lon : '') + '&destination=' + e.lat + ',' + e.lon + '&travelmode=driving';
-  document.getElementById('d-nav').innerHTML = I.nav + 'Navigate';
+  document.getElementById('d-nav').innerHTML = I.nav + 'Navigācija';
   document.getElementById('d-gmap').href = 'https://www.openstreetmap.org/?mlat=' + e.lat + '&mlon=' + e.lon + '#map=15/' + e.lat + '/' + e.lon;
   document.getElementById('d-gmap').innerHTML = I.pin + esc(e.place.split(',')[0].slice(0, 22));
   const ac = document.getElementById('d-addcal');
   if (e.always){ ac.style.display = 'none' } else {
     const f = d => d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
     const s0 = pd(e.start), e0 = new Date(+(pd(e.end)||s0) + 864e5);
-    ac.style.display = ''; ac.innerHTML = I.cal + 'Add to my calendar';
+    ac.style.display = ''; ac.innerHTML = I.cal + 'Pievienot kalendāram';
     ac.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(e.title) + '&dates=' + f(s0) + '/' + f(e0) +
-      '&location=' + encodeURIComponent(e.place + ', ' + e.town) + '&details=' + encodeURIComponent((e.time ? e.time + '\n' : '') + (e.price ? 'Ticket: ' + e.price + '\n' : '') + (e.url || ''));
+      '&location=' + encodeURIComponent(e.place + ', ' + e.town) + '&details=' + encodeURIComponent((e.time ? e.time + '\n' : '') + (e.price ? 'Biļete: ' + e.price + '\n' : '') + (e.url || ''));
   }
-  const cta = document.getElementById('d-cta'), isPrice = /\d|tba|check|ticket/i.test(pr) && !/^free$/i.test(pr);
-  cta.href = safeUrl(e.url); cta.innerHTML = (isPrice ? 'Buy ticket' : 'Event website') + I.arrow.replace('width="14" height="14"','width="20" height="20"');
-  document.getElementById('d-src').innerHTML = 'Found on <a href="'+esc(safeUrl(e.source||e.url))+'" target="_blank" rel="noopener">'+esc((e.source||e.url||'').replace(/^https?:\/\/(www\.)?/,'').slice(0,60))+'</a>.<br>Official page: <a href="'+esc(safeUrl(e.url))+'" target="_blank" rel="noopener">'+esc((e.url||'').replace(/^https?:\/\/(www\.)?/,''))+'</a><br><br>Address: '+esc(e.place)+', '+esc(e.town)+'<br>Coordinates: '+e.lat.toFixed(5)+', '+e.lon.toFixed(5);
+  const cta = document.getElementById('d-cta'), isPrice = /\d|tba|check|ticket|biļet|skat|jautā|cen/i.test(pr) && !/^(free|bez maksas)$/i.test(pr);
+  cta.href = safeUrl(e.url); cta.innerHTML = (isPrice ? 'Pirkt biļeti' : 'Pasākuma lapa') + I.arrow.replace('width="14" height="14"','width="20" height="20"');
+  document.getElementById('d-src').innerHTML = 'Atrasts: <a href="'+esc(safeUrl(e.source||e.url))+'" target="_blank" rel="noopener">'+esc((e.source||e.url||'').replace(/^https?:\/\/(www\.)?/,'').slice(0,60))+'</a><br>Oficiālā lapa: <a href="'+esc(safeUrl(e.url))+'" target="_blank" rel="noopener">'+esc((e.url||'').replace(/^https?:\/\/(www\.)?/,''))+'</a><br><br>Adrese: '+esc(e.place)+', '+esc(e.town)+'<br>Koordinātas: '+e.lat.toFixed(5)+', '+e.lon.toFixed(5);
   tab('ov');
   const d = document.getElementById('detail'); d.classList.add('on'); d.scrollTop = 0;
   if (!miniMap) miniMap = new TileMap(document.getElementById('minimap'), { onPick: false });
@@ -620,16 +622,16 @@ function renderCal(){
   const used = [...new Set(evs.filter(e => { const s = pd(e.start), en = pd(e.end)||s; return s <= new Date(y, m + 1, 0) && en >= first }).map(catOf))];
   document.getElementById('calLegend').innerHTML = used.map(c => '<span><i style="background:'+CATS[c].color+'"></i>'+CATS[c].name+'</span>').join('');
   const dayEvs = evs.filter(e => onDay(e, calSel));
-  const lbl = +calSel === +t ? 'Today' : DOW[calSel.getDay()] + ', ' + calSel.getDate() + ' ' + MON[calSel.getMonth()];
+  const lbl = +calSel === +t ? 'Šodien' : DOW[calSel.getDay()] + ', ' + calSel.getDate() + '. ' + MON[calSel.getMonth()];
   document.getElementById('calDayTitle').textContent = lbl;
-  document.getElementById('calDayCount').textContent = dayEvs.length ? dayEvs.length + (dayEvs.length > 1 ? ' events' : ' event') : '';
+  document.getElementById('calDayCount').textContent = dayEvs.length ? nEv(dayEvs.length) : '';
   const nextUp = evs.filter(e => e.next > calSel).sort((a,b) => a.next - b.next)[0];
   document.getElementById('calList').innerHTML = dayEvs.length ? dayEvs.map(lrow).join('') :
-    '<div class="empty"><b>Nothing on this day</b>' + (nextUp ? 'Next: ' + esc(nextUp.title) + ' on ' + nextUp.next.getDate() + ' ' + MON[nextUp.next.getMonth()] + '.' : 'Pick a day with a dot.') + '</div>';
+    '<div class="empty"><b>Šajā dienā nekā nav</b>' + (nextUp ? 'Nākamais: ' + esc(nextUp.title) + ', ' + nextUp.next.getDate() + '. ' + MON[nextUp.next.getMonth()] + '.' : 'Izvēlies dienu ar punktu.') + '</div>';
   const cs = document.getElementById('calSaved');
-  cs.innerHTML = I.heart.replace('<svg ','<svg width="15" height="15" ') + (calSavedOnly ? 'Saved only' : 'All events');
+  cs.innerHTML = I.heart.replace('<svg ','<svg width="15" height="15" ') + (calSavedOnly ? 'Tikai saglabātie' : 'Visi pasākumi');
   cs.style.background = calSavedOnly ? 'var(--accent)' : ''; cs.style.color = calSavedOnly ? '#fff' : '';
-  if (calSavedOnly && !evs.length) document.getElementById('calList').innerHTML = '<div class="empty"><b>No saved events yet</b>Tap the heart on any event to keep it here and in this calendar.</div>';
+  if (calSavedOnly && !evs.length) document.getElementById('calList').innerHTML = '<div class="empty"><b>Nav saglabātu pasākumu</b>Pieskaries sirsniņai pie pasākuma, un tas parādīsies šeit un kalendārā. Par saglabātajiem saņemsi atgādinājumus.</div>';
 }
 
 /* ---------- navigation ---------- */
@@ -649,7 +651,9 @@ function show(s){
 function toast(t){ const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove('on'), 2600) }
 function toggleSave(id){
   saved.has(id) ? saved.delete(id) : saved.add(id); store.set('saved', [...saved]);
-  toast(saved.has(id) ? 'Saved' : 'Removed from saved'); render();
+  if (saved.has(id) && A && A.askNotify) try { A.askNotify() } catch (_) {}
+  syncReminders();
+  toast(saved.has(id) ? 'Saglabāts · atgādināsim dienu iepriekš' : 'Noņemts no saglabātajiem'); render();
   if (curEvent) document.getElementById('d-fav').classList.toggle('on', saved.has(curEvent.id));
 }
 
@@ -658,34 +662,43 @@ let pendingUpdate = null;
 function myBuild(){ try { return A && A.build ? Number(A.build()) : 0 } catch (_) { return 0 } }
 async function checkUpdate(manual){
   const b = myBuild();
-  document.getElementById('verInfo').textContent = b ? 'Build ' + b : 'Preview (web)';
-  if (!A){ if (manual) toast('Updates install in the Android app'); return }
+  document.getElementById('verInfo').textContent = b ? 'Versija ' + b : 'Priekšskatījums (web)';
+  if (!A){ if (manual) toast('Atjauninājumi instalējas Android lietotnē'); return }
   try {
     const r = await fetch(APP_URL + '?t=' + Date.now(), { cache: 'no-store' }); const j = await r.json();
     if (j && j.build > b && j.url){ pendingUpdate = j; showUpdate(); render() }
-    else if (manual) toast('You have the newest version');
-  } catch (_) { if (manual) toast('Could not check – are you online?') }
+    else if (manual) toast('Tev ir jaunākā versija');
+  } catch (_) { if (manual) toast('Neizdevās pārbaudīt – vai ir internets?') }
 }
 function showUpdate(){
   const u = pendingUpdate; if (!u) return;
-  document.getElementById('u-title').textContent = 'Update available · Build ' + u.build;
-  document.getElementById('u-notes').textContent = u.notes || 'A newer version of the app is ready.';
-  document.getElementById('u-go').innerHTML = 'Update now' + I.arrow.replace('width="14" height="14"','width="20" height="20"');
+  document.getElementById('u-title').textContent = 'Pieejams atjauninājums · versija ' + u.build;
+  document.getElementById('u-notes').textContent = u.notes || 'Ir gatava jaunāka lietotnes versija.';
+  document.getElementById('u-go').innerHTML = 'Atjaunināt' + I.arrow.replace('width="14" height="14"','width="20" height="20"');
   document.getElementById('u-bar').style.display = 'none';
   document.getElementById('sheet').classList.add('on');
 }
 window.onUpdateProgress = p => { document.getElementById('u-bar').style.display = ''; if (p >= 0) document.getElementById('u-prog').style.width = p + '%' };
-window.onUpdateReady = () => { document.getElementById('u-go').textContent = 'Installing…' };
-window.onUpdateFailed = w => { toast(w === 'install' ? 'Allow "Install unknown apps" for this app, then try again' : 'Download failed – try again'); document.getElementById('u-go').innerHTML = 'Try again' };
+window.onUpdateReady = () => { document.getElementById('u-go').textContent = 'Instalē…' };
+window.onUpdateFailed = w => { toast(w === 'install' ? 'Atļauj šai lietotnei "Instalēt nezināmas lietotnes" un mēģini vēlreiz' : 'Lejupielāde neizdevās – mēģini vēlreiz'); document.getElementById('u-go').innerHTML = 'Mēģināt vēlreiz' };
 
 /* ---------- wiring ---------- */
+function nEv(n){ return n + (n % 10 === 1 && n % 100 !== 11 ? ' pasākums' : ' pasākumi') }
+function syncReminders(){
+  if (!A || !A.setReminders) return;
+  const list = EVENTS.filter(e => saved.has(e.id) && !e.always && !isPast(e)).map(e => ({ id: e.id, title: e.title, start: (e.dates && e.dates.length ? e.dates.map(pd).find(d => d >= today()) : null) ? fmtISO(e.next) : e.start, place: e.place + ', ' + e.town, time: e.time || '' }));
+  try { A.setReminders(JSON.stringify(list)) } catch (_) {}
+}
+function fmtISO(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0') }
+let pendingOpen = null;
+window.openFromNotice = id => { if (!id) return; if (EVENTS.some(e => e.id === id)) openDetail(id); else pendingOpen = id };
 function greet(){ const h = new Date().getHours(); return h < 5 ? 'Labu nakti!' : h < 12 ? 'Labrīt!' : h < 18 ? 'Labdien!' : 'Labvakar!' }
 document.getElementById('greet').textContent = greet();
 document.getElementById('avatar').innerHTML = CATS.cars.icon.replace('<svg ','<svg width="20" height="20" ');
 document.getElementById('i-bell').innerHTML = I.bell;
 document.getElementById('i-search').innerHTML = I.search;
 document.getElementById('i-arrow-s').innerHTML = I.arrow;
-document.getElementById('tipBtn').innerHTML = I.ext + 'Suggest an event you heard about';
+document.getElementById('tipBtn').innerHTML = I.ext + 'Ieteikt pasākumu, par ko dzirdēji';
 document.getElementById('d-back').innerHTML = I.back;
 document.getElementById('d-fav').innerHTML = I.heart;
 const NAVI = { home: I.home, cal: I.cal, map: I.compass, saved: I.heart, me: I.user };
@@ -702,31 +715,33 @@ document.getElementById('calPrev').onclick = () => { calM = new Date(calM.getFul
 document.getElementById('calNext').onclick = () => { calM = new Date(calM.getFullYear(), calM.getMonth() + 1, 1); renderCal() };
 document.getElementById('calGrid').onclick = ev => { const b = ev.target.closest('[data-d]'); if (!b) return; calSel = new Date(+b.dataset.d);
   if (calSel.getMonth() !== calM.getMonth()) calM = new Date(calSel.getFullYear(), calSel.getMonth(), 1); renderCal() };
+document.getElementById('calToday').onclick = () => { calSel = today(); calM = new Date(calSel.getFullYear(), calSel.getMonth(), 1); renderCal() };
 document.getElementById('calSaved').onclick = () => { calSavedOnly = !calSavedOnly; renderCal() };
 async function setHome(){
-  const q = document.getElementById('homeIn').value.trim(); if (!q) return toast('Type your address first');
+  const q = document.getElementById('homeIn').value.trim(); if (!q) return toast('Vispirms ieraksti adresi');
   const tries = [q, q.split(',').slice(-1)[0].trim(), q.replace(/^\D*?\d+\S*\s*,?\s*/, '')].filter((v, i, a) => v && a.indexOf(v) === i);
   for (const t of tries){
     try {
       const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=lv&q=' + encodeURIComponent(t), { headers: { 'Accept-Language': 'lv,en' } });
       const j = await r.json();
       if (j && j[0]){ home = { name: q, lat: +j[0].lat, lon: +j[0].lon }; store.set('home', home); if (DATA) prepare(DATA); render();
-        document.getElementById('homeIn').value = ''; return toast(t === q ? 'Home saved' : 'Home saved (found ' + t + ')') }
-    } catch (_) { return toast('Could not look up the address – are you online?') }
+        document.getElementById('homeIn').value = ''; return toast(t === q ? 'Mājas saglabātas' : 'Mājas saglabātas (atrasts: ' + t + ')') }
+    } catch (_) { return toast('Neizdevās atrast adresi – vai ir internets?') }
   }
-  toast('Address not found – try just the village or town');
+  toast('Adrese nav atrasta – mēģini tikai ciemu vai pilsētu');
 }
 document.getElementById('homeSave').onclick = setHome;
 document.getElementById('homeIn').addEventListener('keydown', ev => { if (ev.key === 'Enter') setHome() });
-document.getElementById('homeReset').onclick = () => { home = null; store.set('home', null); if (DATA) prepare(DATA); render(); toast('Distances from Riga centre') };
+document.getElementById('homeReset').onclick = () => { home = null; store.set('home', null); if (DATA) prepare(DATA); render(); toast('Attālumi no Rīgas centra') };
 document.getElementById('homeBanner').onclick = () => { show('me'); setTimeout(() => document.getElementById('homeIn').focus(), 200) };
+document.getElementById('testNotify').onclick = () => { if (A && A.testReminder) { try { A.testReminder() } catch (_) {} } else toast('Paziņojumi strādā Android lietotnē') };
 document.getElementById('reload').onclick = () => loadData(true);
 document.getElementById('checkUpd').onclick = () => checkUpdate(true);
 document.getElementById('bell').onclick = () => {
   if (pendingUpdate) return showUpdate();
   const fresh = EVENTS.filter(e => !seen.has(e.id) && !isPast(e));
-  if (!fresh.length) return toast('No new events since your last look');
-  cat = 'all'; query = ''; render(); toast(fresh.length + ' new event' + (fresh.length > 1 ? 's' : '') + ' – marked with ●');
+  if (!fresh.length) return toast('Kopš pēdējās reizes jaunu pasākumu nav');
+  cat = 'all'; query = ''; render(); toast('Jauni: ' + nEv(fresh.length) + ' – atzīmēti ar ●');
 };
 document.body.addEventListener('click', ev => {
   const h = ev.target.closest('[data-h]'); if (h){ ev.stopPropagation(); ev.preventDefault(); return toggleSave(h.dataset.h) }
@@ -736,7 +751,7 @@ document.getElementById('d-back').onclick = () => { try { history.back() } catch
 document.getElementById('d-fav').onclick = () => curEvent && toggleSave(curEvent.id);
 document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => tab(b.dataset.t));
 document.getElementById('u-later').onclick = () => document.getElementById('sheet').classList.remove('on');
-document.getElementById('u-go').onclick = () => { if (pendingUpdate && A && A.downloadUpdate){ document.getElementById('u-go').textContent = 'Downloading…'; A.downloadUpdate(pendingUpdate.url) } };
+document.getElementById('u-go').onclick = () => { if (pendingUpdate && A && A.downloadUpdate){ document.getElementById('u-go').textContent = 'Lejupielādē…'; A.downloadUpdate(pendingUpdate.url) } };
 window.addEventListener('popstate', () => { if (curEvent) closeDetail() });
 window.onBack = () => { if (document.getElementById('sheet').classList.contains('on')){ document.getElementById('sheet').classList.remove('on'); return true }
   if (curEvent){ closeDetail(); return true } if (curScreen !== 'home'){ show('home'); return true } return false };
