@@ -1,0 +1,80 @@
+name: Build APK
+
+# Every change to the app (not to the event list) builds a new APK, publishes it as a release,
+# and bumps data/app.json so the phone shows "Update available".
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['data/**', '*.md', 'docs/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-apk
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the page and the event list
+        run: |
+          python3 tools/validate_events.py data/events.json
+          node tools/check_page.js app/src/main/assets/index.html
+
+      - name: Put the current event list inside the app (works offline on first start)
+        run: python3 tools/bundle.py app/src/main/assets/index.html data/events.json app/src/main/assets/index.html
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.7"
+
+      - name: Build APK
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Rename APK
+        run: |
+          mkdir -p out
+          cp app/build/outputs/apk/debug/app-debug.apk out/latvia-events.apk
+
+      - name: Publish as a release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Build ${{ github.run_number }}
+          make_latest: true
+          files: out/latvia-events.apk
+          body: |
+            Build ${{ github.run_number }} · ${{ github.event.head_commit.message || 'manual build' }}
+            On your phone: tap latvia-events.apk below, open it, allow "Install unknown apps" if asked.
+
+      - name: Tell the phones there is an update (data/app.json)
+        env:
+          MSG: ${{ github.event.head_commit.message || 'Improvements and fixes' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          python3 - <<'PY'
+          import json, os
+          n = int(os.environ['GITHUB_RUN_NUMBER'])
+          note = os.environ.get('MSG', '').split('\n')[0][:200]
+          json.dump({
+            "build": n,
+            "url": f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/releases/download/build-{n}/latvia-events.apk",
+            "notes": note
+          }, open('data/app.json', 'w'), indent=1)
+          PY
+          git add data/app.json
+          git commit -m "App build ${GITHUB_RUN_NUMBER} published" || exit 0
+          git push origin HEAD:main
