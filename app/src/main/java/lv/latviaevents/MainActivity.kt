@@ -57,8 +57,13 @@ class MainActivity : Activity() {
             }
         }
 
-        // Keep the page clear of the status bar and the gesture bar (Android 15+ draws apps edge to edge)
-        web.setOnApplyWindowInsetsListener { v, insets ->
+        // Keep the page clear of the status bar and the gesture bar (Android 15+ draws apps edge to edge).
+        // The padding goes on a frame around the WebView: a WebView ignores its own padding.
+        val root = android.widget.FrameLayout(this)
+        root.setBackgroundColor(0xFFF2F2F4.toInt())
+        root.addView(web, android.widget.FrameLayout.LayoutParams(
+            android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT))
+        root.setOnApplyWindowInsetsListener { v, insets ->
             if (Build.VERSION.SDK_INT >= 30) {
                 val b = insets.getInsets(android.view.WindowInsets.Type.systemBars() or android.view.WindowInsets.Type.ime())
                 v.setPadding(b.left, b.top, b.right, b.bottom)
@@ -69,7 +74,7 @@ class MainActivity : Activity() {
             insets
         }
 
-        setContentView(web)
+        setContentView(root)
         @Suppress("DEPRECATION")
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
             (if (Build.VERSION.SDK_INT >= 26) View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR else 0)
