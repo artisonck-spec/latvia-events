@@ -36,13 +36,16 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
 .search .go{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent)}
 .row{display:flex;align-items:center;justify-content:space-between;margin:0 0 14px}
 .link{font-size:13px;color:var(--ink3);display:flex;align-items:center;gap:4px}
-.chips{display:flex;gap:10px;overflow-x:auto;margin:0 -20px 26px;padding:4px 20px 8px;scrollbar-width:none}
+.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:14px 6px;margin:0 0 28px}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;display:flex;align-items:center;gap:9px;background:var(--card);border-radius:18px;padding:8px 16px 8px 8px;font-size:13px;font-weight:600;box-shadow:var(--shadow);transition:transform .15s}
-.chip .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center}
-.chip .ic svg{width:20px;height:20px}
-.chip.on{background:var(--dark);color:#fff}
-.chip.on .ic{background:rgba(255,255,255,.12)!important;color:#fff!important}
+.chip{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--ink2);transition:transform .15s;min-width:0}
+.chip .ic{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:var(--card)!important;box-shadow:var(--shadow);position:relative}
+.chip .ic svg{width:22px;height:22px}
+.chip .lb{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip .n{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--bg);color:var(--ink2);font-size:10px;display:grid;place-items:center;padding:0 4px;border:2px solid var(--bg)}
+.chip.on{color:var(--ink)}
+.chip.on .ic{background:var(--dark)!important;color:#fff!important}
+.chip.on .n{background:var(--accent);color:#fff}
 .chip:active{transform:scale(.96)}
 .toggle{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2)}
 .sw{width:38px;height:22px;border-radius:11px;background:#D9D9DE;position:relative;transition:.2s}
@@ -329,6 +332,7 @@ const CATS = {
   orienteering:{ name:'Orienteering',color:'#D24F7A', soft:'#FBE4EC', sky:['#3A1426','#E36D97'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 21V4M5 4h14v9H5"/><path d="M5 4l14 9"/></svg>' },
   tips:       { name:'Tips & meets', color:'#4A4A55', soft:'#ECECEF', sky:['#111114','#5C5C6B'], icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg>' }
 };
+const SHORT = { all:'All', cars:'Cars', moto:'Enduro', atv:'ATV', festival:'Festivals', market:'Markets', exhibition:'Expos', outdoor:'Outdoor', orienteering:'Orient.', tips:'Meets' };
 const catOf = e => CATS[e.category] ? e.category : 'tips';
 
 /* ---------- generated artwork (no photos needed) ---------- */
@@ -425,7 +429,7 @@ function filtered(){
 function chips(){
   const counts = {}; EVENTS.forEach(e => { if (!isPast(e)) counts[catOf(e)] = (counts[catOf(e)]||0)+1 });
   document.getElementById('chips').innerHTML = Object.entries(CATS).map(([k,c]) =>
-    '<button class="chip'+(k===cat?' on':'')+'" data-c="'+k+'"><span class="ic" style="background:'+c.soft+';color:'+c.color+'">'+c.icon+'</span>'+c.name+(k!=='all'&&counts[k]?' <span style="opacity:.45;font-weight:500">'+counts[k]+'</span>':'')+'</button>').join('');
+    '<button class="chip'+(k===cat?' on':'')+'" data-c="'+k+'"><span class="ic" style="color:'+c.color+'">'+c.icon+(k!=='all'&&counts[k]?'<span class="n">'+counts[k]+'</span>':'')+'</span><span class="lb">'+SHORT[k]+'</span></button>').join('');
 }
 function heartBtn(e){ return '<span class="heart'+(saved.has(e.id)?' on':'')+'" data-h="'+esc(e.id)+'">'+I.heart+'</span>' }
 function tcard(e){
