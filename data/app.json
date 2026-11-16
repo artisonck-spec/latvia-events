@@ -1,1 +1,5 @@
-{"build": 0, "url": "", "notes": ""}
+{
+ "build": 3,
+ "url": "https://github.com/artisonck-spec/latvia-events/releases/download/build-3/latvia-events.apk",
+ "notes": "New: saved events live in the calendar (tap 'Saved only'); 4-tab menu"
+}
