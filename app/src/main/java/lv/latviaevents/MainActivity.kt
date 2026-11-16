@@ -11,13 +11,8 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
-import androidx.core.content.FileProvider
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewClientCompat
-import java.io.File
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
 
 /** A small Android shell around the event page in assets/index.html. */
 class MainActivity : Activity() {
@@ -143,47 +138,9 @@ class MainActivity : Activity() {
         }
     }
 
-    // ---- Updating the app: download the new APK (progress to the page), then hand it to Android's installer ----
-    @Volatile private var updating = false
+    // ---- Updating the app: the browser downloads the new APK; tapping it in Downloads installs it over this one ----
     fun downloadUpdate(url: String) {
-        if (updating) return
         if (!url.startsWith("https://")) return
-        updating = true
-        Thread {
-            try {
-                val dir = File(cacheDir, "share").apply { mkdirs() }
-                val f = File(dir, "update.apk"); f.delete()
-                var conn = URL(url).openConnection() as HttpURLConnection
-                conn.instanceFollowRedirects = true; conn.connectTimeout = 15000; conn.readTimeout = 30000
-                var hops = 0
-                while (conn.responseCode in 300..399 && hops++ < 5) {   // GitHub sends the file from another address
-                    val next = conn.getHeaderField("Location"); conn.disconnect()
-                    conn = URL(next).openConnection() as HttpURLConnection
-                    conn.connectTimeout = 15000; conn.readTimeout = 30000
-                }
-                if (conn.responseCode != 200) throw IOException("HTTP " + conn.responseCode)
-                val total = conn.contentLengthLong
-                var got = 0L; var lastPct = -1
-                conn.inputStream.use { inp -> f.outputStream().use { out ->
-                    val buf = ByteArray(64 * 1024)
-                    while (true) {
-                        val n = inp.read(buf); if (n < 0) break
-                        out.write(buf, 0, n); got += n
-                        val pct = if (total > 0) (got * 100 / total).toInt() else -1
-                        if (pct != lastPct && pct % 5 == 0) { lastPct = pct; js("window.onUpdateProgress && window.onUpdateProgress($pct)") }
-                    }
-                } }
-                if (got < 50_000) throw IOException("too small")
-                val uri = FileProvider.getUriForFile(this, "$packageName.files", f)
-                runOnUiThread {
-                    js("window.onUpdateReady && window.onUpdateReady()")
-                    val i = Intent(Intent.ACTION_VIEW).setDataAndType(uri, "application/vnd.android.package-archive")
-                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    runCatching { startActivity(i) }.onFailure { js("window.onUpdateFailed && window.onUpdateFailed('install')") }
-                }
-            } catch (e: Exception) {
-                js("window.onUpdateFailed && window.onUpdateFailed('download')")
-            } finally { updating = false }
-        }.start()
+        runOnUiThread { openOutside(Uri.parse(url)) }
     }
 }

@@ -16,18 +16,22 @@ android {
         versionName = "1." + (System.getenv("GITHUB_RUN_NUMBER") ?: "0")
     }
 
-    // One fixed key, so every new APK installs over the previous one and keeps your saved events
+    // One fixed release key, so every new APK installs over the previous one and keeps your saved events
     signingConfigs {
-        getByName("debug") {
-            storeFile = file("events-debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+        create("release") {
+            storeFile = file("pasakumi-release.jks")
+            storePassword = "pasakumi-lv-2026"
+            keyAlias = "pasakumi"
+            keyPassword = "pasakumi-lv-2026"
         }
     }
 
     buildTypes {
-        release { isMinifyEnabled = false }
+        release {
+            isMinifyEnabled = false
+            isDebuggable = false
+            signingConfig = signingConfigs.getByName("release")
+        }
     }
 
     compileOptions {

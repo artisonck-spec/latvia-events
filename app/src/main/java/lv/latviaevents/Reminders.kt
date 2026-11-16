@@ -96,9 +96,3 @@ class ReminderReceiver : BroadcastReceiver() {
     }
 }
 
-/** Alarms are cleared when the phone restarts, so set them again. */
-class BootReceiver : BroadcastReceiver() {
-    override fun onReceive(ctx: Context, intent: Intent) {
-        if (intent.action == Intent.ACTION_BOOT_COMPLETED || intent.action == Intent.ACTION_MY_PACKAGE_REPLACED) Reminders.schedule(ctx)
-    }
-}

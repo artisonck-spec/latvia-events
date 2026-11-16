@@ -25,7 +25,7 @@ After that, the app updates itself: when a new build is out, it shows **Update a
 
 ## Reminders
 
-Saved (hearted) events get a phone notification the day before at 18:00 and on the day at 08:00 (`Reminders.kt`, AlarmManager; re-set after a restart).
+Saved (hearted) events get a phone notification the day before at 18:00 and on the day at 08:00 (`Reminders.kt`, AlarmManager; set again each time the app opens). Updates download through the browser: no install or boot permissions, so Play Protect stays calm.
 
 ## Suggest an event
 

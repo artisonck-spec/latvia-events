@@ -751,7 +751,8 @@ document.getElementById('d-back').onclick = () => { try { history.back() } catch
 document.getElementById('d-fav').onclick = () => curEvent && toggleSave(curEvent.id);
 document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => tab(b.dataset.t));
 document.getElementById('u-later').onclick = () => document.getElementById('sheet').classList.remove('on');
-document.getElementById('u-go').onclick = () => { if (pendingUpdate && A && A.downloadUpdate){ document.getElementById('u-go').textContent = 'Lejupielādē…'; A.downloadUpdate(pendingUpdate.url) } };
+document.getElementById('u-go').onclick = () => { if (pendingUpdate && A && A.downloadUpdate){ A.downloadUpdate(pendingUpdate.url);
+  document.getElementById('u-notes').textContent = 'Lejupielāde sākta pārlūkā. Kad tā beigsies, atver failu latvia-events.apk un spied Instalēt (Atjaunināt). Tavi saglabātie pasākumi paliks.' } };
 window.addEventListener('popstate', () => { if (curEvent) closeDetail() });
 window.onBack = () => { if (document.getElementById('sheet').classList.contains('on')){ document.getElementById('sheet').classList.remove('on'); return true }
   if (curEvent){ closeDetail(); return true } if (curScreen !== 'home'){ show('home'); return true } return false };
