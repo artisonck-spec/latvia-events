@@ -69,6 +69,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -- app/src/main/assets/index.html   # drop the bundled copy made for the APK
           git pull --rebase origin main
           python3 - <<'PY'
           import json, os

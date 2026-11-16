@@ -206,7 +206,7 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
 
   <!-- CALENDAR -->
   <section class="screen" id="s-cal">
-    <div class="top"><h2 style="font-size:26px">Calendar</h2><button class="toggle" id="calRadius"><span>Within 100 km</span><span class="sw on" id="calSw"></span></button></div>
+    <div class="top"><h2 style="font-size:26px">Calendar</h2><button class="pill" id="calSaved" style="display:flex;align-items:center;gap:6px"></button></div>
     <div class="cal">
       <div class="calhead"><button id="calPrev" aria-label="Previous month"></button><b id="calTitle"></b><button id="calNext" aria-label="Next month"></button></div>
       <div class="wk"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
@@ -253,7 +253,6 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
     <button class="on" data-s="home" aria-label="Home"></button>
     <button data-s="cal" aria-label="Calendar"></button>
     <button data-s="map" aria-label="Map"></button>
-    <button data-s="saved" aria-label="Saved"></button>
     <button data-s="me" aria-label="Settings"></button>
   </nav>
 </div>
@@ -594,6 +593,7 @@ function tab(t){
 }
 
 /* ---------- calendar ---------- */
+let calSavedOnly = false;
 let calM = (() => { const d = today(); return new Date(d.getFullYear(), d.getMonth(), 1) })(), calSel = today();
 function onDay(e, d){
   if (e.always) return false;
@@ -601,7 +601,7 @@ function onDay(e, d){
   const s = pd(e.start), en = pd(e.end) || s; return d >= s && d <= en;
 }
 function renderCal(){
-  const evs = filtered().filter(e => !e.always), y = calM.getFullYear(), m = calM.getMonth();
+  const evs = filtered().filter(e => !e.always && (!calSavedOnly || saved.has(e.id))), y = calM.getFullYear(), m = calM.getMonth();
   document.getElementById('calTitle').textContent = MONL[m] + ' ' + y;
   const first = new Date(y, m, 1), start = new Date(y, m, 1 - ((first.getDay() + 6) % 7)), t = today();
   let html = '';
@@ -622,7 +622,10 @@ function renderCal(){
   const nextUp = evs.filter(e => e.next > calSel).sort((a,b) => a.next - b.next)[0];
   document.getElementById('calList').innerHTML = dayEvs.length ? dayEvs.map(lrow).join('') :
     '<div class="empty"><b>Nothing on this day</b>' + (nextUp ? 'Next: ' + esc(nextUp.title) + ' on ' + nextUp.next.getDate() + ' ' + MON[nextUp.next.getMonth()] + '.' : 'Pick a day with a dot.') + '</div>';
-  document.getElementById('calSw').classList.toggle('on', within);
+  const cs = document.getElementById('calSaved');
+  cs.innerHTML = I.heart.replace('<svg ','<svg width="15" height="15" ') + (calSavedOnly ? 'Saved only' : 'All events');
+  cs.style.background = calSavedOnly ? 'var(--accent)' : ''; cs.style.color = calSavedOnly ? '#fff' : '';
+  if (calSavedOnly && !evs.length) document.getElementById('calList').innerHTML = '<div class="empty"><b>No saved events yet</b>Tap the heart on any event to keep it here and in this calendar.</div>';
 }
 
 /* ---------- navigation ---------- */
@@ -695,7 +698,7 @@ document.getElementById('calPrev').onclick = () => { calM = new Date(calM.getFul
 document.getElementById('calNext').onclick = () => { calM = new Date(calM.getFullYear(), calM.getMonth() + 1, 1); renderCal() };
 document.getElementById('calGrid').onclick = ev => { const b = ev.target.closest('[data-d]'); if (!b) return; calSel = new Date(+b.dataset.d);
   if (calSel.getMonth() !== calM.getMonth()) calM = new Date(calSel.getFullYear(), calSel.getMonth(), 1); renderCal() };
-document.getElementById('calRadius').onclick = () => { within = !within; store.set('within', within); render() };
+document.getElementById('calSaved').onclick = () => { calSavedOnly = !calSavedOnly; renderCal() };
 async function setHome(){
   const q = document.getElementById('homeIn').value.trim(); if (!q) return toast('Type your address first');
   const tries = [q, q.split(',').slice(-1)[0].trim(), q.replace(/^\D*?\d+\S*\s*,?\s*/, '')].filter((v, i, a) => v && a.indexOf(v) === i);
