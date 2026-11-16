@@ -23,7 +23,9 @@
       "url": "https://www.staroriga.lv",
       "source": "https://lvportals.lv/dienaskartiba/396615-staro-riga-2026-aicina-but-kopa-gaismas-mirklos-2026",
       "desc": "52 light installations, video projections and audiovisual objects along both banks of the Daugava for Latvia's birthday. On 18 November the Freedom Monument installation becomes a concert stage.",
-      "verified": true
+      "verified": true,
+      "image": "https://raksti.lv.lv/PR/2026/NOVEMBRIS/BILDES/76JTLOTWZ.JPEG",
+      "image_checked": true
     },
     {
       "id": "333-atv-cforce-2026-11-21",
@@ -41,7 +43,9 @@
       "url": "https://333.lv/",
       "source": "https://www.latvia.travel/en/latvian-motorsports-and-motorsports-centres",
       "desc": "CFMOTO CFORCE ATV event at the 333 motorsport complex, about 20 km from Riga. The complex has a karting track, MX/enduro park and a café.",
-      "verified": false
+      "verified": false,
+      "image": "https://raceway.lv/wp-content/uploads/2022/04/DJI_0772-1.jpeg",
+      "image_checked": true
     },
     {
       "id": "rzk-2026-1",
@@ -59,7 +63,9 @@
       "url": "https://rzk.lv",
       "source": "https://sportacentrs.com/motoru_sports/16112026-novembra_nogale_bikerniekos_startes_rigas",
       "desc": "10th season of Rīgas ziemas kauss. Street and race cars on asphalt and rallycross gravel, timed runs one by one. Classes by drive (FWD, RWD, 4WD) plus Lada Classic, Audi Quattro, juniors and women. You can race your own street car.",
-      "verified": true
+      "verified": true,
+      "image": "https://i.tiesraides.lv/1200x0s/pictures/2026-11-16/99d3_rzk27_4.jpg",
+      "image_checked": true
     },
     {
       "id": "rzk-2026-2",
@@ -77,7 +83,9 @@
       "url": "https://rzk.lv",
       "source": "https://sportacentrs.com/motoru_sports/16112026-novembra_nogale_bikerniekos_startes_rigas",
       "desc": "Second round of the winter time-attack series at Biķernieki. Snow or ice makes it extra fun to watch from the gravel sections.",
-      "verified": true
+      "verified": true,
+      "image": "https://i.tiesraides.lv/1200x0s/pictures/2026-11-16/99d3_rzk27_4.jpg",
+      "image_checked": true
     },
     {
       "id": "rzk-2026-3",
@@ -95,7 +103,9 @@
       "url": "https://rzk.lv",
       "source": "https://sportacentrs.com/motoru_sports/16112026-novembra_nogale_bikerniekos_startes_rigas",
       "desc": "Between-holidays round of Rīgas ziemas kauss: street cars, Lada Classic and Quattros on the Biķernieki winter layout.",
-      "verified": true
+      "verified": true,
+      "image": "https://i.tiesraides.lv/1200x0s/pictures/2026-11-16/99d3_rzk27_4.jpg",
+      "image_checked": true
     },
     {
       "id": "rzk-2027-4",
@@ -113,7 +123,9 @@
       "url": "https://rzk.lv",
       "source": "https://sportacentrs.com/motoru_sports/16112026-novembra_nogale_bikerniekos_startes_rigas",
       "desc": "Season finale of the 10th Riga Winter Cup with the overall awards.",
-      "verified": true
+      "verified": true,
+      "image": "https://i.tiesraides.lv/1200x0s/pictures/2026-11-16/99d3_rzk27_4.jpg",
+      "image_checked": true
     },
     {
       "id": "xmas-doma-2026",
@@ -131,7 +143,9 @@
       "url": "https://www.liveriga.com",
       "source": "https://www.thewomtravel.com/latvia/riga/riga-christmas-markets.html",
       "desc": "Riga's main Christmas market: 80+ stalls of Latvian craftsmen and home producers, food, mulled wine, music evenings and the big tree in Dome Square. Some guides give 4 January as the last day.",
-      "verified": true
+      "verified": true,
+      "image": "https://www.thewomtravel.com/content/uploads/sites/4/2026/10/riga-1024x683.jpg",
+      "image_checked": true
     },
     {
       "id": "xmas-kalnciema-2026",
@@ -156,7 +170,9 @@
       "url": "https://www.latvia.travel/en/event/christmas-market-kalnciema-quarter",
       "source": "https://www.twtravel.de/lettland/riga/weihnachtsmaerkte-riga.html",
       "desc": "Farmers, artisans and food makers in the courtyard of the restored 19th-century wooden houses across the river. Smaller and more local than Dome Square.",
-      "verified": true
+      "verified": true,
+      "image": "https://ame-live-content-thewom.s3.eu-west-1.amazonaws.com/sites/4/2026/10/riga-1024x683.jpg",
+      "image_checked": true
     },
     {
       "id": "xmas-baltic-expo-2026",
@@ -174,7 +190,9 @@
       "url": "https://www.latvia.travel/en/event/baltics-largest-3-day-christmas-market",
       "source": "https://www.thewomtravel.fr/lettonie/riga/marche-noel-riga.html",
       "desc": "The biggest 3-day Christmas market in the Baltics: 400–500 traders from Latvia, Lithuania and Estonia under one roof, plus a Baltic food zone.",
-      "verified": true
+      "verified": true,
+      "image": "https://www.thewomtravel.fr/content/uploads/sites/4/2026/10/riga-1024x683.jpg",
+      "image_checked": true
     },
     {
       "id": "lnmm-stardust",
@@ -192,7 +210,9 @@
       "url": "https://lnmm.gov.lv/en/latvian-national-museum-of-art/exhibitions/stardust-590",
       "source": "https://lnmm.gov.lv/en/latvian-national-museum-of-art/exhibitions/stardust-590",
       "desc": "Exhibition by artist Laimdota Malle in the Cupola Hall of the main museum building, 1 Jaņa Rozentāla Square.",
-      "verified": true
+      "verified": true,
+      "image": "https://lnmm.gov.lv/cache/images/4134270934/6a19382ee26a1_1845218601.jpg",
+      "image_checked": true
     },
     {
       "id": "zuzeum-looking-away",
@@ -210,7 +230,9 @@
       "url": "https://www.meer.com/en/112852-looking-away-women-artists-in-the-zuzans-collection-punkt-punkt-punkt",
       "source": "https://www.meer.com/en/112852-looking-away-women-artists-in-the-zuzans-collection-punkt-punkt-punkt",
       "desc": "Women artists in the Zuzāns Collection, 2000–2026.",
-      "verified": true
+      "verified": true,
+      "image": "https://www.meer.com/attachments/64357a1d5a090f04f935bfa7a0143adfe08e0fda/store/fill/860/645/7675668d8bf5d99a6c22d90d46402ad3d0e0adb7691259c7e0856195e4f8/Various-artists-Looking-away-Women-artists-in-the-Zuzans-Collection-2000-2026-exhibition-view.jpg",
+      "image_checked": true
     },
     {
       "id": "rally-aluksne-2027",
@@ -228,7 +250,9 @@
       "url": "https://www.autorally.lv",
       "source": "https://www.go4speed.lv/lv/calendar/",
       "desc": "Round 1 of the Latvian Rally Championship and a proper snow-and-ice winter rally. About 200 km from Riga, outside your usual radius, but worth the drive.",
-      "verified": true
+      "verified": true,
+      "image": "https://autorally.lv/files/r272/social-share.jpg",
+      "image_checked": true
     },
     {
       "id": "rally-sarma-2027",
@@ -246,7 +270,9 @@
       "url": "https://www.autorally.lv",
       "source": "https://www.go4speed.lv/lv/calendar/",
       "desc": "Latvia's iconic winter rally on the snowy roads of Gulbene region, Round 2 of the Latvian Rally Championship. About 180 km from Riga.",
-      "verified": true
+      "verified": true,
+      "image": "https://autorally.lv/files/r272/social-share.jpg",
+      "image_checked": true
     },
     {
       "id": "balttour-2027",
@@ -264,7 +290,8 @@
       "url": "https://www.bt1.lv",
       "source": "https://www.luminik.io/events/balttour-international-travel-fair-riga.md",
       "desc": "The Baltics' biggest tourism fair. Good for finding outdoor trips, camping spots and adventure tours for next season.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     },
     {
       "id": "outdoor-riga-2027",
@@ -282,7 +309,8 @@
       "url": "https://www.bt1.lv",
       "source": "https://www.eventseye.com/fairs/c1_trade-shows_latvia.html",
       "desc": "Trade show for outdoor adventure: boat show, hunting and fishing, moto and bikes. Runs together with the hunting show.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     },
     {
       "id": "auto-2027",
@@ -300,7 +328,8 @@
       "url": "https://www.bt1.lv/auto/",
       "source": "https://cantonfair.net/event/19366-automechanics-latvia",
       "desc": "The biggest motor show in the Baltics: new cars, Auto Mechanics and the Auto Exotica tuning section.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     },
     {
       "id": "wolftrike-drift-hall",
@@ -319,7 +348,9 @@
       "url": "https://www.lieliskadavana.lv/drifta-halle",
       "source": "https://skydive.lv/en/blogs/articles/sports-car-driving-latvia",
       "desc": "Latvia's only indoor drift track, with electric drift trikes. Something to do on a slow winter evening.",
-      "verified": true
+      "verified": true,
+      "image": "https://skydive.lv/cdn/shop/articles/20260331_0800_Image_Generation_simple_compose_01kn146es9ejya76w81txgdm64.png?v=1774933400",
+      "image_checked": true
     },
     {
       "id": "kalnciema-saturday-market",
@@ -338,7 +369,9 @@
       "url": "https://www.liveriga.com/en/3710-fair-at-kalnciema-quarter",
       "source": "https://latvia.travel/en/event/kalnciema-quarter-market",
       "desc": "Year-round farmers' and artisans' market with local food. A good Saturday stop.",
-      "verified": true
+      "verified": true,
+      "image": "https://www.liveriga.com/userfiles/images/pasakumi/tirdzini/2011/02/tirgus-kalnciema-kvartala.jpg",
+      "image_checked": true
     }
   ]
 }
