@@ -349,7 +349,9 @@
       "url": "https://www.gaismasfestivals.lv",
       "source": "https://lvportals.lv/dienaskartiba/397157-28-novembri-jurmala-atklas-verienigu-gaismas-festivalu-2026",
       "desc": "Gaismas projekcijas uz ēkām, egļu promenāde Jomas ielā un gaismu dārzs Dzintaru mežaparkā. No 5. decembra mežaparkā arī Ziemassvētku tirdziņš.",
-      "verified": true
+      "verified": true,
+      "image": "https://raksti.lv.lv/PR/2026/NOVEMBRIS/BILDES/76JTTFRFX.JPEG",
+      "image_checked": true
     },
     {
       "id": "jelgava-advente-2026",
@@ -367,7 +369,9 @@
       "url": "https://www.jelgava.lv/jaunumi/atverta-tirgotaju-pieteiksanas-adventes-un-ziemassvetku-ieskanas-tirdzinam-jelgava/",
       "source": "https://pasakumiii.lv/event/35437",
       "desc": "Pirmās Adventes tirdziņš ar dāvanām un gardumiem, vienlaikus tiek iedegta pilsētas egle.",
-      "verified": true
+      "verified": true,
+      "image": "https://www.jelgava.lv/wp-content/uploads/2026/10/IMG_8666-1015x677-1.jpg",
+      "image_checked": true
     },
     {
       "id": "ogre-advente-2026",
@@ -385,7 +389,9 @@
       "url": "https://www.okultura.lv/lv/pasakumi/pirmas-adventes-tirdzins/",
       "source": "https://pasakumiii.lv/event/33273",
       "desc": "Mājražotāju maize, siers, medus un amatnieku darbi Ogres centrā pirmajā Adventē.",
-      "verified": true
+      "verified": true,
+      "image": "https://www.okultura.lv/images/events/7fb26e6aed9579c86427c905daa7274b/000/000/159/s6_15928.png",
+      "image_checked": true
     },
     {
       "id": "cesis-xmas-2026",
@@ -403,7 +409,8 @@
       "url": "https://www.cesis.lv",
       "source": "https://gadatirgi.lv/29-11-2026-cesis-cesu-ziemassvetku-tirdzins/",
       "desc": "Pilsētas Ziemassvētku tirdziņš Cēsu vecpilsētas galvenajā ielā. Decembra nedēļas nogalēs Cēsīs gaidāmi vēl citi tirdziņi.",
-      "verified": false
+      "verified": false,
+      "image_checked": true
     },
     {
       "id": "ligatne-xmas-2026",
@@ -421,7 +428,9 @@
       "url": "https://pasakumi.cesis.lv/pasakums/ligatnes-ziemassvetku-tirdzins-2/",
       "source": "https://pasakumiii.lv/event/38808",
       "desc": "Amatnieku un dāvanu tirdziņš telpās katru dienu līdz pat 23. decembrim. Labs pieturas punkts braucienā uz Gaujas Nacionālo parku.",
-      "verified": true
+      "verified": true,
+      "image": "https://pasakumiii.lv/img/event-images/a0/a00fe0ac34d53927bc4aef54627751428246694299e31ff006a156b8a59ee1d9.jpg",
+      "image_checked": true
     },
     {
       "id": "jelgava-ledus-2027",
@@ -439,7 +448,8 @@
       "url": "https://kultura.jelgava.lv",
       "source": "https://kultura.jelgava.lv/wp-content/uploads/2026/09/REGULATION_ICE27.pdf",
       "desc": "28. ledus skulptūru festivāls – tēlnieki no dažādām valstīm veido skulptūras no ledus, pēc tam tās izstādītas apskatei.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     },
     {
       "id": "rogainings-riga-pavasaris-2027",
@@ -457,7 +467,8 @@
       "url": "https://rogainings.lv/lv/sakums/",
       "source": "https://www.rogaining.lv/",
       "desc": "Pilsētas un meža rogainings Pārdaugavā, sezonas atklāšana. Komandas izvēlas 2 līdz 6 stundu distanci.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     }
   ]
 }
