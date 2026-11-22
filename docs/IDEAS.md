@@ -4,7 +4,7 @@ The weekly self-check picks the top unchecked item that is small and safe, build
 Add your own wishes anywhere in the list.
 
 - [x] Phone notification when new events appear and when an app update is out (BackgroundCheck.kt, JobScheduler about every 30 min)
-- [ ] "This weekend" quick filter on the home screen
+- [x] "This weekend" quick filter on the home screen
 - [ ] "Free only" filter
 - [ ] Distance from your current location instead of from Riga centre (ask for location once)
 - [ ] Share an event (Android share sheet: title, date, link)

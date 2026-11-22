@@ -36,7 +36,13 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
 .search .go{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent)}
 .row{display:flex;align-items:center;justify-content:space-between;margin:0 0 14px}
 .link{font-size:13px;color:var(--ink3);display:flex;align-items:center;gap:4px}
-.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:14px 6px;margin:0 0 28px}
+.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:14px 6px;margin:0 0 16px}
+.quick{display:flex;gap:8px;margin:0 0 26px}
+.qpill{display:flex;align-items:center;gap:7px;background:var(--card);color:var(--ink);box-shadow:var(--shadow);font-size:13px;font-weight:600;padding:10px 14px;border-radius:14px;transition:background .15s,color .15s}
+.qpill svg{width:15px;height:15px;color:var(--accent)}
+.qpill small{font-size:12px;font-weight:500;color:var(--ink3)}
+.qpill.on{background:var(--dark);color:#fff}
+.qpill.on small{color:#B9B9C0}
 .chips::-webkit-scrollbar{display:none}
 .chip{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--ink2);transition:transform .15s;min-width:0}
 .chip .ic{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:var(--card)!important;box-shadow:var(--shadow);position:relative}
@@ -200,6 +206,7 @@ h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
     <button class="empty" id="homeBanner" style="display:none;width:100%;margin:-8px 0 22px;text-align:left"><b>Norādi savas mājas</b>Attālumi un brauciena laiks tiks rēķināti no tavas adreses. Pieskaries, lai to pievienotu iestatījumos.</button>
     <div class="row"><h2>Kategorijas</h2><button class="toggle" id="radiusToggle"><span id="radiusLabel">Līdz 100 km</span><span class="sw on" id="radiusSw"></span></button></div>
     <div class="chips" id="chips"></div>
+    <div class="quick"><button class="qpill" id="wkBtn"></button></div>
     <div class="row"><h2 id="upTitle">Drīzumā</h2><button class="link" id="seeAll">Visi pasākumi <span id="i-arrow-s"></span></button></div>
     <div class="cards" id="cards"></div>
     <div class="row"><h2>Visi pasākumi</h2><span class="link" id="countLabel"></span></div>
@@ -366,7 +373,7 @@ const store = {
   set(k,v){ try{ localStorage.setItem('le.'+k, JSON.stringify(v)) }catch(_){} }
 };
 let DATA = null, EVENTS = [], cat = 'all', query = '', within = store.get('within', true), showPast = store.get('past', false);
-let home = store.get('home', null);
+let home = store.get('home', null), weekend = false;
 const origin = () => home || RIGA;
 let saved = new Set(store.get('saved', [])), seen = new Set(store.get('seen', [])), firstRun = !store.get('seenInit', false);
 const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d };
@@ -421,6 +428,15 @@ async function loadData(force){
 }
 
 /* ---------- rendering ---------- */
+function weekendDays(){ // this Saturday and Sunday (only Sunday left if today is Sunday)
+  const t = today(), d = t.getDay();
+  if (d === 0) return [t];
+  const sat = new Date(t.getFullYear(), t.getMonth(), t.getDate() + (6 - d));
+  return [sat, new Date(sat.getFullYear(), sat.getMonth(), sat.getDate() + 1)];
+}
+function weekendText(){ const w = weekendDays(), a = w[0], b = w[w.length - 1];
+  return w.length === 1 ? 'Sv, ' + a.getDate() + '. ' + MON[a.getMonth()] : a.getDate() + '.' + (a.getMonth() !== b.getMonth() ? ' ' + MON[a.getMonth()] + ' ' : '') + '–' + b.getDate() + '. ' + MON[b.getMonth()] }
+function homeList(){ const l = filtered(); if (!weekend) return l; const w = weekendDays(); return l.filter(e => w.some(d => onDay(e, d))) }
 function filtered(){
   const q = query.trim().toLowerCase();
   return EVENTS.filter(e =>
@@ -449,9 +465,11 @@ function lrow(e){
 }
 function render(){
   chips();
-  const list = filtered();
+  const list = homeList();
+  const wb = document.getElementById('wkBtn'); wb.classList.toggle('on', weekend);
+  wb.innerHTML = I.cal + 'Šajā nedēļas nogalē <small>' + esc(weekendText()) + '</small>';
   const upcoming = list.filter(e => !e.always).slice(0, 8);
-  document.getElementById('upTitle').textContent = cat === 'all' ? 'Drīzumā' : CATS[cat].name;
+  document.getElementById('upTitle').textContent = weekend ? 'Nedēļas nogalē' : cat === 'all' ? 'Drīzumā' : CATS[cat].name;
   document.getElementById('cards').innerHTML = upcoming.length ? upcoming.map(tcard).join('') : '';
   document.getElementById('cards').style.display = upcoming.length ? '' : 'none';
   document.getElementById('countLabel').textContent = nEv(list.length);
@@ -462,7 +480,9 @@ function render(){
     html += lrow(e);
   });
   if (!list.length){
-    html = cat === 'tips'
+    html = weekend
+      ? '<div class="empty"><b>Šajā nedēļas nogalē nekā nav</b>'+(cat !== 'all' ? 'Izvēlies citu kategoriju vai ' : 'Pieskaries ')+'"Šajā nedēļas nogalē" vēlreiz, lai redzētu visus pasākumus.</div>'
+      : cat === 'tips'
       ? '<div class="empty"><b>Pagaidām nav</b>Šeit parādīsies auto salidojumi un braucieni no publiskiem kanāliem un forumiem, atzīmēti kā nepārbaudīti.</div>'
       : '<div class="empty"><b>Nekas nav atrasts</b>Izvēlies citu kategoriju'+(within?' vai izslēdz "Līdz 100 km"':'')+'.</div>';
   }
@@ -629,7 +649,7 @@ function renderCal(){
   document.getElementById('calDayCount').textContent = dayEvs.length ? nEv(dayEvs.length) : '';
   const nextUp = evs.filter(e => e.next > calSel).sort((a,b) => a.next - b.next)[0];
   document.getElementById('calList').innerHTML = dayEvs.length ? dayEvs.map(lrow).join('') :
-    '<div class="empty"><b>Šajā dienā nekā nav</b>' + (nextUp ? 'Nākamais: ' + esc(nextUp.title) + ', ' + nextUp.next.getDate() + '. ' + MON[nextUp.next.getMonth()] + '.' : 'Izvēlies dienu ar punktu.') + '</div>';
+    '<div class="empty"><b>Šajā dienā nekā nav</b>' + (nextUp ? 'Nākamais: ' + esc(nextUp.title) + ', ' + nextUp.next.getDate() + '. ' + MON[nextUp.next.getMonth()] : 'Izvēlies dienu ar punktu.') + '</div>';
   const cs = document.getElementById('calSaved');
   cs.innerHTML = I.heart.replace('<svg ','<svg width="15" height="15" ') + (calSavedOnly ? 'Tikai saglabātie' : 'Visi pasākumi');
   cs.style.background = calSavedOnly ? 'var(--accent)' : ''; cs.style.color = calSavedOnly ? '#fff' : '';
@@ -645,7 +665,7 @@ function show(s){
   if (s === 'cal') renderCal();
   if (s === 'map'){
     if (!bigMap) bigMap = new TileMap(document.getElementById('bigmap'), { zoom: 9 });
-    const evs = filtered(); document.getElementById('mapCount').textContent = evs.length + ' events';
+    const evs = filtered(); document.getElementById('mapCount').textContent = nEv(evs.length);
     requestAnimationFrame(() => bigMap.setEvents(evs, true));
   }
   window.scrollTo(0, 0);
@@ -707,10 +727,11 @@ const NAVI = { home: I.home, cal: I.cal, map: I.compass, saved: I.heart, me: I.u
 document.querySelectorAll('.nav button').forEach(b => { b.innerHTML = NAVI[b.dataset.s]; b.onclick = () => show(b.dataset.s) });
 document.getElementById('q').addEventListener('input', ev => { query = ev.target.value; render() });
 document.getElementById('chips').addEventListener('click', ev => { const b = ev.target.closest('[data-c]'); if (b){ cat = b.dataset.c; render() } });
+document.getElementById('wkBtn').onclick = () => { weekend = !weekend; render() };
 document.getElementById('radiusToggle').onclick = () => { within = !within; store.set('within', within); render() };
 document.getElementById('radiusPill').onclick = () => { within = !within; store.set('within', within); render() };
 document.getElementById('pastSw').onclick = () => { showPast = !showPast; store.set('past', showPast); render() };
-document.getElementById('seeAll').onclick = () => { cat = 'all'; query = ''; document.getElementById('q').value = ''; render(); document.getElementById('list').scrollIntoView({ behavior: 'smooth' }) };
+document.getElementById('seeAll').onclick = () => { cat = 'all'; query = ''; weekend = false; document.getElementById('q').value = ''; render(); document.getElementById('list').scrollIntoView({ behavior: 'smooth' }) };
 document.getElementById('calPrev').innerHTML = I.back;
 document.getElementById('calNext').innerHTML = I.back.replace('<svg ','<svg style="transform:scaleX(-1)" ');
 document.getElementById('calPrev').onclick = () => { calM = new Date(calM.getFullYear(), calM.getMonth() - 1, 1); renderCal() };
