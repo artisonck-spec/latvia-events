@@ -492,7 +492,9 @@
       "url": "https://raceway.lv/raceway-ziemas-kauss-26-27/",
       "source": "https://raceway.lv/raceway-ziemas-kauss-26-27/",
       "desc": "18. sezonas ziemas autosprints ielas auto ar ziemas riepām uz 333 asfalta trases. Klases pēc piedziņas, amatieri un PRO.",
-      "verified": true
+      "verified": true,
+      "image": "https://raceway.lv/wp-content/uploads/2026/11/ZS-kvadrats.png",
+      "image_checked": true
     },
     {
       "id": "lc-iekstelpu-mx-2026-27",
@@ -515,7 +517,9 @@
       "url": "https://speedzonemx.com/",
       "source": "https://licences.lv/events?all=&discipline=&full=",
       "desc": "Ziemas motokrosa čempionāts trīs posmos iekštelpu arēnā netālu no Jelgavas. Laba iespēja redzēt MX arī ziemā.",
-      "verified": true
+      "verified": true,
+      "image": "https://framerusercontent.com/assets/WTYYwVOaUcjrte4AE2Z5iZKEj8.jpg",
+      "image_checked": true
     },
     {
       "id": "ziemas-magnets-2026-27",
@@ -549,7 +553,8 @@
       "url": "https://magnets.lv/en",
       "source": "https://magnets.lv/en/nolikumi/ziemas-magnets-2026-2027",
       "desc": "Rīgas tradicionālais ziemas orientēšanās seriāls brīvdienās. Atbrauc, nopērc karti un starto.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     },
     {
       "id": "gaujas-ziema-ligatne-2026",
@@ -567,7 +572,9 @@
       "url": "https://meridians.lv/index.php?lapa=gaujas-ziema-2026-2027",
       "source": "https://meridians.lv/index.php?lapa=gaujas-ziema-2026-2027",
       "desc": "Ziemas orientēšanās seriāla 9. kārta – vienīgā, kas notiek ērtā attālumā no Rīgas.",
-      "verified": true
+      "verified": true,
+      "image": "https://meridians.lv/img/gaujas-ziema-2026-2027.png",
+      "image_checked": true
     },
     {
       "id": "fil-luge-sigulda-2027",
@@ -585,7 +592,8 @@
       "url": "https://www.fil-luge.org",
       "source": "https://www.fil-luge.org/cdn/uploads/detailed-schedule-eberspaecher-wc-26-27-status31july.pdf",
       "desc": "Pasaules kausa posms kamaniņu sportā Siguldas trasē. Ātrums virs 100 km/h tepat ~50 km no Rīgas.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     },
     {
       "id": "magic-mezaparks-2026",
@@ -603,7 +611,9 @@
       "url": "https://myexpo.lv/en/event/magic-ziemassvetu-davanu-tirdzins-mezaparka/",
       "source": "https://myexpo.lv/en/event/",
       "desc": "Vienas dienas āra tirdziņš ar amatnieku darbiem un ēdieniem blakus Rīgas zoodārzam.",
-      "verified": true
+      "verified": true,
+      "image": "https://myexpo.lv/wp-content/uploads/2026/09/WWW-4-800x480.png",
+      "image_checked": true
     },
     {
       "id": "white-xmas-vermanes-2026",
@@ -621,7 +631,9 @@
       "url": "https://myexpo.lv/en/event/white-xmas-vermanes-darza/",
       "source": "https://myexpo.lv/en/event/",
       "desc": "Trīs dienu amatnieku un mājražotāju tirdziņš centra parkā tieši pirms Ziemassvētkiem.",
-      "verified": true
+      "verified": true,
+      "image": "https://myexpo.lv/wp-content/uploads/2026/09/wwww-800x480.jpg",
+      "image_checked": true
     },
     {
       "id": "bauska-xmas-2026",
@@ -639,7 +651,9 @@
       "url": "https://www.visit.bauska.lv/lv/pasakumi/2026-11-29/3954-ziemassvetku-tirdzins-bauskas-ratslaukuma/",
       "source": "https://pasakumiii.lv/event/35047",
       "desc": "Bauskā iedegs galveno egli, un Rātslaukumā darbosies amatnieku tirdziņš.",
-      "verified": false
+      "verified": false,
+      "image": "https://www.visit.bauska.lv/uploads/plugins/events/facebook_20261029093452_a4655.jpg",
+      "image_checked": true
     },
     {
       "id": "slokenbeka-brinumu-laiks-2026",
@@ -657,7 +671,8 @@
       "url": "https://www.visittukums.lv/lv/Aktualitates/Tirdzini-un-gadatirgi-Tukuma-novada",
       "source": "https://www.visittukums.lv/lv/Aktualitates/Tirdzini-un-gadatirgi-Tukuma-novada",
       "desc": "Ziemassvētku tirdziņš viduslaiku nocietinātas muižas pagalmā ar labdarības koncertu vakarā.",
-      "verified": true
+      "verified": true,
+      "image_checked": true
     }
   ]
 }
