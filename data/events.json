@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T06:52:00+02:00",
+  "updated": "2026-11-26T06:50:00+02:00",
   "center": {
     "name": "Rīga",
     "lat": 56.9496,
@@ -7,26 +7,6 @@
   },
   "radius_km": 100,
   "events": [
-    {
-      "id": "staro-riga-2026",
-      "title": "Gaismas festivāls “Staro Rīga”",
-      "category": "festival",
-      "start": "2026-11-15",
-      "end": "2026-11-18",
-      "time": "Katru vakaru 17:00–23:00",
-      "place": "Daugavas abi krasti, Vecrīga līdz Kronvalda parkam",
-      "town": "Rīga",
-      "lat": 56.9466,
-      "lon": 24.1037,
-      "price": "Bez maksas",
-      "price_note": "Āra gaismas maršruts, ap 5 km",
-      "url": "https://www.staroriga.lv",
-      "source": "https://lvportals.lv/dienaskartiba/396615-staro-riga-2026-aicina-but-kopa-gaismas-mirklos-2026",
-      "desc": "52 gaismas objekti, video projekcijas un instalācijas abos Daugavas krastos Latvijas dzimšanas dienā. 18. novembrī pie Brīvības pieminekļa notiks koncerts.",
-      "verified": true,
-      "image": "https://raksti.lv.lv/PR/2026/NOVEMBRIS/BILDES/76JTLOTWZ.JPEG",
-      "image_checked": true
-    },
     {
       "id": "333-atv-cforce-2026-11-21",
       "title": "ATV CFORCE pasākums 333 trasē",
@@ -39,7 +19,7 @@
       "lat": 56.9502,
       "lon": 24.4124,
       "price": "Jautā rīkotājam",
-      "price_note": "Tavs padoms. Internetā apstiprinājums netika atrasts: 333 ziņās un cenu lapās par ATV pasākumu 21.11. nekas nav minēts, tajā dienā trasē notika Raceway Ziemas kausa 1. posms. Pārjautā 333, vai pasākums notika.",
+      "price_note": "Tavs padoms. Līdz 26.11. internetā apstiprinājums netika atrasts – 333 un raceway.lv lapās par CFORCE ATV pasākumu 21.11. nekas nav minēts. Pārjautā 333, vai pasākums notika.",
       "url": "https://333.lv/",
       "source": "https://www.latvia.travel/en/latvian-motorsports-and-motorsports-centres",
       "desc": "CFMOTO CFORCE kvadraciklu pasākums 333 motosporta kompleksā, ~20 km no Rīgas. Kompleksā ir kartinga trase, MX/enduro parks un kafejnīca.",
